@@ -1,0 +1,585 @@
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="HaNoiweb.png" type="image/x-icon">
+    <title>Thủ đô Hà Nội - những gì bạn đã biết và chưa biết</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background: #006666;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #006666;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .place {
+            margin-bottom: 40px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: #eee;
+            color: #333;
+            margin-top: 30px;
+        }
+        .toc {
+            background: #e0f7fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            top: 20px;
+        }
+        .toc h2 {
+            margin-top: 0;
+            color: #006666;
+        }
+        .toc ul {
+            padding-left: 20px;
+        }
+        .toc a {
+            color: #006666;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        /* Sidebar for mode switch */
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 80px;
+            width: 180px;
+            background: #fff;
+            border-radius: 8px 0 0 8px;
+            box-shadow: -2px 2px 8px rgba(0,0,0,0.08);
+            padding: 20px 15px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .sidebar .la{
+            position: relative;
+            right: 0;
+            top: 10px;
+            width: 180px;
+            background: #fff;
+            border-radius: 8px 0 0 8px;
+            box-shadow: -2px 2px 8px rgba(0,0,0,0.05);
+            padding: 10px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        body.dark-mode .sidebar .la {
+            background: #263238;
+            box-shadow: -2px 2px 8px rgba(0,0,0,0.12);
+        }
+        body.dark-mode .sidebar .la h3 {
+            color: #80cbc4;
+        }
+        body.dark-mode .sidebar .la .mode-btn {
+            background: #37474f;
+            color: #80cbc4;
+        }
+        body.dark-mode .sidebar .la .mode-btn.active {
+            background: #80cbc4;
+            color: #263238;
+        }
+        .sidebar h3 {
+            margin: 0 0 10px 0;
+            font-size: 1em;
+            color: #006666;
+        }
+        .mode-btn {
+            margin-bottom: 10px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #e0f7fa;
+            color: #006666;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        .mode-btn.active {
+            background: #006666;
+            color: #fff;
+        }
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #222;
+            color: #eee;
+        }
+        body.dark-mode main {
+            background: #2c2c2c;
+            color: #eee;
+        }
+        body.dark-mode header {
+            background: #003333;
+            color: #fff;
+        }
+        body.dark-mode .toc {
+            background: #263238;
+        }
+        body.dark-mode .toc h2,
+        body.dark-mode .toc a {
+            color: #80cbc4;
+        }
+        body.dark-mode .sidebar {
+            background: #263238;
+        }
+        body.dark-mode .sidebar h3 {
+            color: #80cbc4;
+        }
+        body.dark-mode .mode-btn {
+            background: #37474f;
+            color: #80cbc4;
+        }
+        body.dark-mode .mode-btn.active {
+            background: #80cbc4;
+            color: #263238;
+        }
+        body.dark-mode footer {
+            background: #222;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hà Nội - Thủ đô của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam</h1>
+        <p>Trung tâm phía Bắc Việt Nam</p>
+    </header>
+    <div class="sidebar">
+        <h3>Chế độ giao diện</h3>
+        <button class="mode-btn active" id="lightBtn">Light Mode</button>
+        <button class="mode-btn" id="darkBtn">Dark Mode</button>
+
+        <div class="la">
+            <h3>Ngôn ngữ</h3>
+            <button class="mode-btn active" id="translateViBtn">Dịch sang Tiếng Việt</button>
+            <button class="mode-btn" id="translateBtn">Dịch sang Tiếng Anh</button>
+        </div>
+    </div>
+    <main>
+        <nav class="toc">
+            <h2>Mục lục</h2>
+            <ul>
+                <li><a href="#gioi-thieu">Giới thiệu chung về Thủ Đô Hà Nội</a></li>
+                <li><a href="#dia-diem">Địa điểm nổi bật</a>
+                    <ul>
+                        <li><a href="#ho-guom">Hồ Gươm (Hồ Hoàn Kiếm)</a></li>
+                        <ul>
+                            <li><a href="#gioi-thieu-ho-guom">Giới thiệu về Hồ Gươm</a></li>
+                            <li><a href="#lich-su-ho-guom">Lịch sử Hồ Gươm</a></li>
+                        </ul>
+                        <li><a href="#chua-mot-cot">Chùa Một Cột</a></li>
+                        <ul>
+                            <li><a href="#gioi-thieu-chua-mot-cot">Giới thiệu chùa Một Cột (Liên Hoa Đài)</a></li>
+                            <li><a href="#lich-su-chua-mot-cot">Lịch sử chùa Một Cột</a></li>
+                        </ul>
+                        <li><a href="#van-mieu">Văn Miếu - Quốc Tử Giám</a></li>
+                        <ul>
+                            <li><a href="#gioi-thieu-van-mieu">Giới thiệu Văn Miếu - Quốc Tử Giảm - trường Đại Học đầu tiên của Việt Nam</a></li>
+                            <li><a href="#lich-su-van-mieu-quoc-tu-giam">Lịch sử xây dựng trường Đại học Văn Miếu Quốc Tử Giám</a></li>
+                        </ul>
+                        <li><a href="#lang-bac">Lăng Chủ tịch Hồ Chí Minh</a></li>
+                        <ul>
+                            <li><a href="#gioi-thieu-lang-bac">Giới thiệu về Lăng Chủ tịch Hồ Chí Minh</a></li>
+                            <li><a href="#lich-su-chu-tich-ho-chi-minh">Lịch sử và cuộc đời của chủ tịch Hồ Chí Minh</a></li>
+                        </ul>
+                        <li><a href="#hoang-thanh-thang-long">Hoàng Thành Thăng Long</a></li>
+                        <ul>
+                            <li><a href="gioi-thieu-hoang-thanh-thang-long">Giới thiệu Hoàng Thành Thăng Long</a></li>
+                            <li><a href="#lich-su-hoang-thanh-thang-long">Lịch sử và Truyền thuyết xoay xung quanh Hoàng Thành Thăng Long</a></li>
+                        </ul>
+                        <li><a href="#pho-co">Phố cổ Hà Nội</a></li>
+                    </ul>
+                </li>
+                <li><a href="#am-thuc">Ẩm thực đặc sắc</a></li>
+                <ul>
+                    <li><a href="#pho-am-thuc">Phố ẩm thực Tống Duy Tân</a></li>
+                    <li><a href="#cac-mon-noi-tieng">Các món nổi tiếng của Hà Nội</a></li>
+                    <ul>
+                        <li><a href="#pho">Phở</a></li>
+                        <li><a href="#bun-cha">Bún chả</a></li>
+                    </ul>
+                </ul>
+            </ul>
+        </nav>
+        <h2 id="gioi-thieu">Giới thiệu chung về Thủ Đô Hà Nội</h2>
+        <img src="https://th.bing.com/th/id/R.51e5ab22d2ce66806da3848bd43cd847?rik=UhXw2F9M9wWY9w&pid=ImgRaw&r=0" alt="Toàn cảnh Hà Nội">
+        <p>
+            Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam, nằm ở vùng đồng bằng sông Hồng. Thành phố có lịch sử lâu đời với hơn một nghìn năm văn hiến, là trung tâm chính trị, văn hóa, giáo dục và kinh tế quan trọng của cả nước. Hà Nội nổi bật với những công trình kiến trúc cổ kính, các di tích lịch sử và không gian xanh mát của những hồ nước, công viên. Thành phố còn là nơi giao thoa giữa truyền thống và hiện đại, mang đến cho du khách cảm nhận sâu sắc về bản sắc dân tộc Việt Nam. Đến với Hà Nội, bạn sẽ được trải nghiệm nhịp sống sôi động, thưởng thức ẩm thực đặc sắc và khám phá những nét đẹp văn hóa độc đáo của thủ đô ngàn năm tuổi.
+        </p>
+        <h2 id="dia-diem">Địa điểm nổi bật</h2>
+        <div class="place" id="ho-guom">
+            <h3>Hồ Gươm (Hồ Hoàn Kiếm) - viên ngọc giũa lòng thủ đô Hà Nội</h3>
+            <img src="https://th.bing.com/th/id/R.a1737f2b9f04e092d820e69125af5c31?rik=u0BLv%2f7Ah8JEkA&pid=ImgRaw&r=0" alt="Hồ Gươm">
+            <div class="ho-guom" id="gioi-thieu-ho-guom">
+                <h4>Giới thiệu về Hồ Gươm <a href="https://www.google.com/maps/place/H%E1%BB%93+Ho%C3%A0n+Ki%E1%BA%BFm/@21.0287747,105.8497898,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ab953357c995:0x1babf6bb4f9a20e!8m2!3d21.0286669!4d105.8521484!16zL20vMGdwNjV3?entry=ttu&g_ep=EgoyMDI1MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h4>
+                <img src="https://motorbike.vn/wp-content/uploads/2022/07/vi-tri-ho-hoan-kiem.jpg" alt="Giới thiệu về Hồ Gươm">
+                <p>
+                    Không quá lời khi giới thiệu về Hồ Gươm, hồ nước sở hữu vị trí đắc địa nhất Thủ đô khi nằm ngay ở trung tâm quận Hoàn Kiếm. Hồ là một phân lưu của sông Hồng, kết nối giữa ba khu phố lớn là Lý Thái Tổ, Đinh Tiên Hoàng và Hàng Khay. Từ vị trí này, du khách có thể dễ dàng di chuyển sang các con khố khác như: Hàng Đào, Hàng Ngang, Lương Văn Can, Cầu Gỗ, Lò Sũ,… Xa hơn một chút, bạn còn đến được với Tràng Tiền, Tràng Thi, Hàng Bài, Nhà Thờ,… và 36 phố phường.
+                </p>
+            </div>
+            <div class="ho-guom" id="lich-su-ho-guom">
+                <h4>Lịch sử Hồ Gươm</h4>
+                <img src="https://alchetron.com/cdn/l-li-1d229eb2-bee9-4a9a-8bee-71ea14b14a1-resize-750.jpeg" alt="Lịch sử Hồ Gươm">
+                <p>
+                    Trước kia, hồ còn có các tên gọi là hồ Lục Thủy (vì nước có màu xanh quanh năm), hồ Thủy Quân (dùng để duyệt thủy binh), hồ Tả Vọng và Hữu Vọng (trong thời Lê mạt). Tên gọi Hoàn Kiếm xuất hiện vào đầu thế kỷ 15 gắn với truyền thuyết vua Lê Lợi trả lại gươm thần cho Rùa thần. Theo truyền thuyết, trong một lần vua Lê Thái Tổ dạo chơi trên thuyền, bỗng một con rùa vàng nổi lên mặt nước đòi nhà vua trả thanh gươm mà Long Vương cho mượn để đánh đuổi quân Minh xâm lược. Nhà vua liền trả gươm cho rùa thần và rùa lặn xuống nước biến mất. Từ đó hồ được lấy tên là hồ Hoàn Kiếm. Tên hồ còn được lấy để đặt cho một phường trung tâm của Hà Nội (phường Hoàn Kiếm) và là hồ nước duy nhất của phường này cho đến ngày nay.
+                </p>
+            </div>
+        </div>
+        <div class="place" id="chua-mot-cot">
+            <h3>Chùa Một Cột</h3>
+            <img src="https://th.bing.com/th/id/R.6a04788eb90135e42ba6b3bcaafa4615?rik=zsqqPm3xnV%2fKtQ&pid=ImgRaw&r=0" alt="Chùa Một Cột">
+            <div class="chua-mot-cot" id="gioi-thieu-chua-mot-cot">
+                <h4>Giới thiệu chùa một cột(Liên Hoa Đài)<a href="https://www.google.com/maps/place/Ch%C3%B9a+M%E1%BB%99t+C%E1%BB%99t/@21.0356643,105.832559,17.25z/data=!4m6!3m5!1s0x3135aba1728475ed:0xdbe7366fe9dfc2ae!8m2!3d21.0358277!4d105.8336206!16s%2Fm%2F03mdcwc?entry=ttu&g_ep=EgoyMDI1MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h4>
+                <img src="https://cdn.xanhsm.com/2024/11/62af0775-chua-mot-cot-1.jpg" alt="Giới thiệu chùa Một Cột">
+                <p>
+                    Chùa Một Cột, còn gọi là Liên Hoa Đài, là một công trình kiến trúc độc đáo nằm trong quần thể chùa Diên Hựu ở quận Ba Đình, Hà Nội. Ngôi chùa này nổi bật với thiết kế chỉ có một cột đá lớn nâng đỡ toàn bộ phần điện thờ phía trên, tạo hình như một đóa sen vươn lên giữa hồ nước tĩnh lặng.
+                </p>
+            </div>
+            <div class="chua-mot-cot" id="lich-su-chua-mot-cot">
+                <h4>Lịch sử chùa Một Cột</h4>
+                <img src="https://tse2.mm.bing.net/th/id/OIP.m5QYqtWMqvTUd9PiSnu9kQHaEc?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lịch sử chùa Một Cột">
+                <p>
+                    Chùa Một Cột có tên ban đầu là Liên Hoa Đài (蓮花臺) tức là Đài Hoa Sen với lối kiến trúc độc đáo: một điện thờ đặt trên một cột trụ duy nhất. Liên Hoa Đài là công trình nổi tiếng nhất nằm trong quần thể kiến trúc Chùa Diên Hựu (延祐寺), có nghĩa là ngôi chùa 'Phúc lành dài lâu'. Công trình Chùa Diên Hựu nguyên bản được xây vào thời vua Lý Thái Tông mùa đông năm 1049 và hoàn thiện vào năm 1105 thời vua Lý Nhân Tông nay đã không còn. Công trình Liên Hoa Đài hiện tại nằm ở Hà Nội là một phiên bản được chỉnh sửa nhiều lần qua các thời kỳ, bị Pháp phá huỷ khi rút khỏi Hà Nội ngày 11/9/1954 và được dựng lại năm 1955 bởi kiến trúc sư Nguyễn Bá Lăng theo kiến trúc để lại từ thời Nguyễn. Đây là ngôi chùa có kiến trúc độc đáo ở Việt Nam.
+                </p>
+            </div>
+        </div>
+        <div class="place" id="van-mieu">
+            <h3>Văn Miếu - Quốc Tử Giám</h3>
+            <img src="https://th.bing.com/th/id/R.91aa5ddcfc9eaf8d1cb849edd2a65554?rik=CEoSfyu30WNuiQ&pid=ImgRaw&r=0" alt="Văn Miếu - Quốc Tử Giám">
+            <div class="van-mieu" id="gioi-thieu-van-mieu">
+                <h4>Giới thiệu Văn Miếu - Quốc Tử Giảm - Trường Đại Học đầu tiên của Việt Nam<a href="https://www.google.com/maps/place/V%C4%83n+Mi%C3%AA%CC%81u+%E2%80%93+Qu%C3%B4%CC%81c+T%C6%B0%CC%89+Gia%CC%81m/@21.0281175,105.8330943,17z/data=!3m1!4b1!4m6!3m5!1s0x3135ab9926e7bd67:0x580e078874d5df1e!8m2!3d21.0281175!4d105.8356692!16zL20vMGI5aGp6?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h4>
+                <img src="https://lh5.googleusercontent.com/proxy/7ApvIQbyP6DNKaoI4SlIqY-CFlgrACVU4KGc8SwDUn45E86BGSoWHkOEB8cMhZZy6uYp3_bGOsTlSRoxO9HnYreXbVm-Wh9eP9QARx9nP6RDBR5eU-ZIY2BkpYzh" alt="Giới thiệu Văn Miếu - Quốc Tử Giảm - Trường Đại Học đầu tiên của Việt Nam">
+                <p>
+                    Văn miếu Quốc Tử Giám là hai công trình được xây dựng để dạy học và thờ kính Khổng Tử cùng những bậc hiền tài Nho học xưa. Văn miếu được xây dựng vào năm 1070 dưới thời vua Lý Thánh Tông, còn Quốc Tử Giám được xây dựng năm 1076, dưới thời vua Lý Nhân Tông.
+
+                    Có thể nói, thời Lý là giai đoạn giáo dục Việt Nam phát triển nhất trong các thời đại vua chúa phong kiến và công trình Quốc Tử Giám chính là minh chứng rõ nét nhất cho quyết tâm nâng cao học thức của vua Lý Nhân Tông.
+
+                    Đây là công trình được xây nên nhằm cổ vũ tinh thần hiếu học của nhân dân cũng như tìm kiếm nhân tài phục vụ đất nước. Sau khi được xây dựng, việc học tập ở Quốc Tử Giám bắt đầu vào năm 1076.
+
+                    Giám sinh (học trò) Quốc Tử Giám là những sĩ tử đã đỗ kì thi Hương, vượt qua kỳ kiểm tra ở Bộ Lễ sẽ được vào Quốc Tử Giám học tập, nghe giảng sách, làm văn để chuẩn bị thi Hội, thi Đình. Rất nhiều học giả nổi tiếng có công cho triều đình đã học tập tại Quốc Tử Giám.
+                </p>
+            </div>
+            <div class="van-mieu" id="lich-su-van-mieu-quoc-tu-giam">
+                <h4>Lịch sử xây dựng trường Đại học Văn Miếu Quốc Tử Giám</h4>
+                <img src = "https://honglam.vn/pic/general/images/van-mieu-quoc-tu-giam.png" alt="Lịch sử xây dựng trường Đại học Văn Miếu Quốc Tử Giám">
+                <p>
+                    Thời Lý:
+                        Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông, vừa là nơi thờ Khổng Tử và các bậc hiền triết, vừa là trường học hoàng gia đầu tiên cho Thái tử Lý Càn Đức (sau là vua Lý Nhân Tông).
+                        Năm 1076, vua Lý Nhân Tông lập Quốc Tử Giám – trường đại học đầu tiên của Việt Nam, dành cho con vua và quý tộc.
+                    Thời Trần:
+                        Năm 1253, vua Trần Thái Tông đổi tên thành Quốc Học viện, mở rộng đối tượng học sinh, bao gồm cả con dân thường có học lực xuất sắc.
+                        Chu Văn An được bổ nhiệm làm Tư nghiệp Quốc Tử Giám và sau khi mất được thờ tại Văn Miếu.
+                    Thời Hậu Lê:
+                        Nho giáo phát triển mạnh. Năm 1484, vua Lê Thánh Tông cho dựng bia Tiến sĩ từ khoa thi năm 1442, mỗi khoa một bia đặt trên lưng rùa.
+                        Việc dựng bia diễn ra qua nhiều thời kỳ, có lúc bị gián đoạn, nhưng vẫn được tiếp tục đến cuối triều Lê.
+                    Thời Nguyễn:
+                        Quốc Tử Giám được lập tại Huế. Văn Miếu Thăng Long trở thành Văn Miếu Hà Nội.
+                        Tổng trấn Bắc Thành Nguyễn Văn Thành xây thêm Khuê Văn Các.
+                        Khu vực này sau được xây đền Khải Thánh để thờ cha mẹ Khổng Tử.
+                    Thời hiện đại:
+                        Năm 1947, thực dân Pháp phá hủy một phần Văn Miếu bằng pháo.
+                        Ngày nay, khu Thái Học được phục dựng trên nền cũ của Quốc Tử Giám với kiến trúc truyền thống, gồm Tiền đường, Hậu đường, Tả vu, Hữu vu, nhà chuông, nhà trống.
+                </p>
+            </div>
+        </div>
+        <div class="place" id="lang-bac">
+            <h3>Lăng Chủ tịch Hồ Chí Minh</h3>
+            <div class="lang-bac" id="gioi-thieu-lang-bac">
+                <h4>Giới thiệu về Lăng Chủ tịch Hồ Chí Minh<a href="https://www.google.com/maps/place/L%C4%83ng+Ch%E1%BB%A7+t%E1%BB%8Bch+H%E1%BB%93+Ch%C3%AD+Minh/@21.0355242,105.8341603,17z/data=!4m6!3m5!1s0x3135aba15ec15d17:0x620e85c2cfe14d4c!8m2!3d21.0368973!4d105.8346667!16s%2Fm%2F02xbhg7?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h4>
+                <img src="https://dulich9.com/wp-content/uploads/2023/08/Huong-dan-tham-quan-Lang-Bac-ngay-2-9-huong-dan-duong-di.png" alt="Giới thiệu về Lăng Chủ tịch Hồ Chí Minh">
+                <p>
+                    Lăng Chủ tịch Hồ Chí Minh, còn gọi là Lăng Hồ Chủ tịch, Lăng Bác, là nơi gìn giữ thi hài Chủ tịch Hồ Chí Minh. Lăng được chính thức khởi công ngày 2 tháng 9 năm 1973, tại vị trí lễ đài cũ giữa Quảng trường Ba Đình, nơi Chủ tịch Hồ Chí Minh từng chủ trì các cuộc gặp mặt quan trọng.
+                    Lăng được khánh thành vào ngày 29 tháng 8 năm 1975, gồm 3 lớp với chiều cao 21,6 m, chiều rộng 41,2 m; lớp dưới tạo dáng bậc thềm tam cấp, lớp giữa là kết cấu trung tâm của lăng gồm phòng thi hài và những hành lang, những cầu thang. Bên ngoài lăng được ốp bằng đá granite xám, bên trong làm bằng đá xám và đỏ được đánh bóng. Quanh 4 mặt là những hàng cột vuông bằng đá hoa cương, lớp trên cùng là mái lăng hình tam cấp. Ở mặt chính có dòng chữ: 'CHỦ TỊCH HỒ-CHÍ-MINH' bằng đá hồng màu mận chín. Xung quanh lăng là các khu vườn nơi hơn 250 loài thực vật được trồng từ khắp mọi miền của Việt Nam.
+                </p>
+            </div>
+            <div class="van-mieu" id="lich-su-chu-tich-ho-chi-minh">
+                <h4>Lịch sử và cuộc đời của chủ tịch Hồ Chí Minh</h4>
+                <img src="https://tse3.mm.bing.net/th/id/OIP.OHceTWGIIWgqtyoeiXcL5QHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Lịch sử và cuộc đời của chủ tịch Hồ Chí Minh">
+                <p>Hồ Chí Minh (chữ Nho: 胡志明; 19 tháng 5 năm 1890 – 2 tháng 9 năm 1969), tên khai sinh là Nguyễn Sinh Cung (chữ Nho: 阮生恭), còn được gọi phổ biến tại Việt Nam với tên gọi Bác Hồ, là một nhà cách mạng và chính khách người Việt Nam. Ông là người sáng lập Đảng Cộng sản Việt Nam, từng là Chủ tịch nước Việt Nam Dân chủ Cộng hòa từ 1945–1969, Thủ tướng Việt Nam Dân chủ Cộng hòa trong những năm 1945–1955, Tổng Bí thư Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ 1956–1960, Chủ tịch Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ năm 1951 cho đến khi qua đời.
+                    Trong quãng thời gian sinh sống và hoạt động trước khi lên nắm quyền, Hồ Chí Minh đã đi qua nhiều quốc gia và châu lục, ông được cho là đã sử dụng từ 50[1] đến 200 bí danh khác nhau.[2] Về mặt tư tưởng chính trị, Hồ Chí Minh là một người theo chủ nghĩa Marx–Lenin. Ông là nhà lãnh đạo phong trào độc lập Việt Minh tiến hành Cách mạng Tháng Tám năm 1945. Ông cũng là người đã soạn thảo, đọc bản Tuyên ngôn độc lập thành lập nước Việt Nam Dân chủ Cộng hòa, và trở thành Chủ tịch nước sau cuộc tổng tuyển cử năm 1946.
+                    Trong giai đoạn diễn ra chiến tranh Đông Dương và chiến tranh Việt Nam, Hồ Chí Minh là nhân vật chủ chốt trong hàng ngũ lãnh đạo của Việt Nam Dân chủ Cộng hòa và Mặt trận Dân tộc Giải phóng miền Nam Việt Nam. Hồ Chí Minh giảm dần hoạt động chính trị vào năm 1965 vì lý do sức khỏe rồi qua đời vào năm 1969. Năm 1975, Việt Nam Dân chủ Cộng hòa chiến thắng, hai miền Việt Nam được thống nhất, dẫn đến sự ra đời của nhà nước Cộng hòa Xã hội chủ nghĩa Việt Nam vào năm 1976. Thành phố Sài Gòn – Gia Định được đổi tên thành Thành phố Hồ Chí Minh để tôn vinh ông cũng như sự kiện này. Ngoài hoạt động chính trị, Hồ Chí Minh cũng là nhà văn, nhà thơ và nhà báo với nhiều tác phẩm viết bằng tiếng Việt, tiếng Hán và tiếng Pháp.
+                </p>
+            </div>
+        </div>
+        <div class="place" id="hoang-thanh-thang-long">
+            <h3>Hoàng Thành Thăng Long</h3>
+            <img src="https://ohayo-onsen.com/wp-content/uploads/2024/05/hoang-thanh-thang-long-1-1.jpg" alt="Hoàng Thành Thăng Long">
+            <div class="hoang-thanh-thang-long" id="gioi-thieu-hoang-thanh-thang-long">
+                <h4>Giới thiệu Hoàng Thành Thăng Long<a href="https://www.google.com/maps/place/Imperial+Citadel+of+Thang+Long/@21.0352231,105.8376845,17z/data=!3m1!4b1!4m6!3m5!1s0x3135aba3381d7c49:0xb521a7d98f582937!8m2!3d21.0352231!4d105.8402594!16s%2Fm%2F05zw9vk?entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h4>
+                <img src="https://cdn.xanhsm.com/2024/11/236b88c1-ve-hoang-thanh-thang-long-1.jpg" alt="Giới thiệu Hoàng Thành Thăng Long">
+                <p>       
+                    Hoàng thành Thăng Long là quần thể di tích lịch sử và văn hóa tại Hà Nội, có lịch sử hơn 1.000 năm, từng là trung tâm quyền lực của nhiều triều đại phong kiến Việt Nam. Nơi đây bao gồm nhiều công trình kiến trúc giá trị như Đoan Môn, Điện Kính Thiên, Kỳ Đài, và khu khảo cổ 18 Hoàng Diệu. Hoàng thành được UNESCO công nhận là Di sản Văn hóa Thế giới vào năm 2010 nhờ giá trị lịch sử, văn hóa, và kiến trúc độc đáo. 
+                </p>
+            </div>
+            <div class="hoang-thanh-thang-long" id="lich-su-hoang-thanh-thang-long">
+                <h3>Lịch sử và Truyền thuyết xoay xung quanh Hoàng Thành Thăng Long</h3>
+                <img src="https://cdn.justfly.vn/400x300/media/202312/09/1702088215-justfly-vuon-hoa-ly-thai-to-hanoi6.jpg" alt="vườn hoa Lý Thái Tổ">
+                <p>
+                   Năm 1009, Lý Công Uẩn lên ngôi, sáng lập ra vương triều Lý, lấy niên hiệu là Thái Tổ, đóng đô ở Hoa Lư (Ninh Bình). Hoa Lư là kinh đô của nước Đại Cồ Việt dưới hai triều Đinh (968-979) và Tiền Lê (980-1009), nằm ở vùng núi non hiểm trở với địa thế 'tiến khả dĩ công, thoái khả dĩ thủ' (tiến có thể đánh thắng, thoái có thể bảo vệ). Song vị vua 35 tuổi quyết định dời đô ra thành Đại La. Trong Chiếu dời đô, Lý Công Uẩn viết, thành Đại La “Ở vào nơi trung tâm trời đất, được thế rồng cuộn hổ ngồi, chính giữa Nam Bắc Đông Tây, tiện nghi núi sông sau trước. Vùng này mặt đất rộng mà bằng phẳng, thế đất cao mà sáng sủa, dân cư không khổ thấp trũng tối tăm, muôn vật hết sức tươi tốt phồn thịnh. Xem khắp nước Việt đó là nơi thắng địa, thực là chỗ tụ hội quan yếu của bốn phương, đúng là nơi thượng đô kinh sư mãi muôn đời”. Trong Đại Việt sử ký tiền biên, sử gia Ngô Thì Sĩ đánh giá rất cao việc dời đô của Lý Công Uẩn: 'Đất Long Đỗ là nơi Cao Biền đóng đô ở đấy, núi Tản Viên chống vững một cõi, sông Phú Lương như hào trời sinh ra, ngàn dặm bằng phẳng, trăm họ giàu có, phía Tây thông với Sơn Tây, Tuyên Hưng, phía Bắc thấu đến Ninh Sóc, Kinh Bắc. Miền Đông Nam thì vận chuyển bằng thuyền, miền Cần Xương thì liên lạc bằng trạm là nơi bốn phương của nước, bốn phương chầu về, núi là vạt áo che, sông là dải đai thắt, sau lưng là sông, trước mặt là biển, địa thế hùng mạnh mà hiểm, rộng mà dài. Có thể làm nơi vua ở hùng tráng, ngôi báu vững bền. Hình thế nước Việt không nơi nào hơn được nơi này... Lý Thái Tổ lên ngôi, chưa vội làm việc khác mà trước tiên mưu tính việc định đô, đặt đỉnh, xét về sự quyết đoán sáng suốt, mưu kế anh hùng, thực những vua tầm thường không thể làm được'. Mùa Thu năm 1010, Lý Công Uẩn cùng hoàng triều và tướng lĩnh giong thuyền về Đại La. Trong một giấc mơ, ông đặt tên kinh thành là Thăng Long với nghĩa 'rồng bay'. Ngay từ năm 1010, khi mới định đô Thăng Long, Lý Công Uẩn đã khởi công xây dựng Hoàng thành và hàng loạt cung điện ở trong Hoàng thành. Hoàng thành đắp bằng đất, phía ngoài có hào, mở bốn cửa: Tường Phù ở phía Đông, Quảng Phúc ở phía Tây, Đại Hưng ở phía Nam, Diệu Đức ở phía Bắc. Tuy còn những ý kiến khác nhau, nhưng căn cứ vào sử liệu và di tích còn lại, có thể xác định cửa Tường Phù mở ra phía Chợ Đông và khu phố buôn bán tấp nập của phường Giang Khẩu và đền Bạch Mã.
+                </p>
+            </div>
+        </div>
+        <div class="place" id="pho-co">
+            <h3>Phố cổ Hà Nội</h3>
+            <img src="https://tse2.mm.bing.net/th/id/OIP.hxzhZyBgBwAP75_D97BM5AHaE9?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Phố cổ Hà Nội">
+            <p>
+                Phố cổ Hà Nội là khu vực lịch sử gồm khoảng 100 ha với 76 tuyến phố thuộc 10 phường ở quận Hoàn Kiếm, nổi tiếng với các khu phố chuyên bán từng mặt hàng cụ thể như Hàng Bạc (vàng bạc), Hàng Mã (đồ thờ cúng, trang trí), và Hàng Đào (vải vóc). Du khách có thể tham quan các địa điểm như Hồ Hoàn Kiếm, Chợ Đồng Xuân, Nhà Cổ Mã Mây, và tận hưởng không khí nhộn nhịp của Chợ đêm phố cổ vào cuối tuần. 
+            </p>
+        </div>
+        <h2 id="am-thuc">Ẩm thực đặc sắc</h2>
+        <div class="am-thuc" id="pho-am-thuc">
+            <h3>Phố ẩm thực Tống Duy Tân<a href="https://www.google.com/maps/search/ph%E1%BB%91+%E1%BA%A9m+th%E1%BB%B1c+t%E1%BB%91ng+duy+t%C3%A2n+h%C3%A0+n%E1%BB%99i/@21.0293646,105.8436381,17.54z?authuser=0&entry=ttu&g_ep=EgoyMDI1MDkxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size: 0.8em; color: #006666; text-decoration: underline;">(Xem bản đồ)</a></h3>
+            <img src="https://mediadddt.kinhtedothi.vn/upload/userfiles/images/z6226405015591_2e7f2652fce87cea1e093f08e8a48634_14012025094204_44.jpg" alt="Phố ảm thực Tống Duy Tân">
+            <p>
+                Phố Tống Duy Tân không chỉ nổi tiếng bởi những quán cà phê độc đáo mà còn được biết đến là nơi tập trung vô số món ăn ngon, từ đồ ăn nhẹ đến các bữa ăn no, phục vụ đa dạng nhu cầu của thực khách.
+                Phố Tống Duy Tân dài khoảng 200m, kéo từ phố Trần Phú tới đường Điện Biên Phủ. Tên phố được đặt theo Tiến sĩ Tống Duy Tân (1837-1892), một chí sĩ yêu nước nổi tiếng quê ở huyện Vĩnh Lộc, tỉnh Thanh Hóa. Vào thời Nguyễn, con đường này thuộc khu vực cửa Đông - Nam Thành cổ, nay thuộc phường Hàng Bông, quận Hoàn Kiếm. Trải qua nhiều tên gọi như Bùi Bá Ký hay Kỳ Đồng, đến năm 1964, phố chính thức mang tên Tống Duy Tân.
+                Trước đây, phố chủ yếu phục vụ khách Việt ăn đêm, nhưng hiện nay con phố ẩm thực này sôi động cả ngày lẫn đêm với nhiều quán ăn và quán cà phê thu hút nhiều du khách.
+                Phố Tống Duy Tân đã trở thành điểm ăn uống quen thuộc của người dân Hà Nội. Có người ví vui rằng nếu bạn không biết ăn gì, hãy lên phố Tống Duy Tân bởi nơi hội tụ từ các món truyền thống Việt Nam đến các món hiện đại phục vụ cả khách quốc tế. Thực đơn phong phú với đặc sản ba miền, khiến phố này trở thành điểm dừng chân
+            </p>
+        </div>
+        <div class="am-thuc" id = "cac-mon-noi-tieng">
+            <h3>Các món nổi tiếng của Hà Nội</h3>
+            <div class="cac-mon-noi-tieng" id="pho">
+                <h4>Phở</h4>
+                <p>
+                    Phở (chữ Nôm: 𬖾) là một món ăn truyền thống của Việt Nam, được xem là một trong những món ăn tiêu biểu cho nền ẩm thực Việt Nam.
+                    Thành phần chính của phở là bánh phở và nước dùng cùng với thịt bò hoặc thịt gà cắt lát mỏng, hành. Thịt bò thích hợp nhất để nấu phở là thịt, xương từ các giống bò ta (bò nội, bò vàng). Ngoài ra còn kèm theo các gia vị như: tương, tiêu, chanh, nước mắm, ớt, ... Những gia vị này được thêm vào tùy theo khẩu vị của người dùng. Phở thông thường được dùng để làm món điểm tâm buổi sáng hoặc lót dạ buổi đêm; nhưng ở các thành phố lớn, món ăn này có thể được thưởng thức cả ngày. Tại các tỉnh phía Nam Việt Nam và một số vùng miền khác, phở được bày kèm với đĩa rau thơm như hành, giá và những lá cây rau mùi, rau húng, trong đó ngò gai là loại lá đặc trưng của phở; tuy nhiên tại Hà Nội thông thường sẽ không có đĩa rau sống này. Phở thường là phở bò hay phở gà, nhưng đôi khi cũng có những biến thể khác, đặc biệt là phở cuốn, phở sốt vang, phở khô, phở xào, phở chua, phở vịt ở Cao Bằng, và phở thịt quay ở các tỉnh miền núi phía Bắc, phở khô ở Gia Lai.
+                </p>
+            </div>
+            <div class="cac-mon-noi-tieng" id="bun-cha">
+                <h4>Bún chả</h4>
+                <p>
+                    Bún chả là một món ăn của Việt Nam, bao gồm bún, chả thịt lợn nướng trên than hoa và bát nước mắm chua cay mặn ngọt. Món ăn xuất xứ từ miền Bắc Việt Nam, là thứ quà có sức sống lâu bền nhất của Hà Nội,[1] nên có thể coi đây là một trong những đặc sản đặc trưng của ẩm thực Hà thành. Bún chả có nét tương tự món bún thịt nướng ở miền Trung và miền Nam, nhưng nước mắm pha có vị thanh nhẹ hơn.
+                    Cựu tổng thống Mỹ Barack Obama đã dùng món ăn này.
+                </p>
+            </div>
+        </div>
+        <p>
+            Hà Nội còn nổi tiếng với các món ăn truyền thống khác như bánh cuốn, cốm làng Vòng, và nhiều món ăn đường phố hấp dẫn.
+        </p>
+    </main>
+    <footer>
+        &copy; 2025 Giới thiệu Hà Nội
+    </footer>
+    <script>
+        const lightBtn = document.getElementById('lightBtn');
+        const darkBtn = document.getElementById('darkBtn');
+        lightBtn.onclick = function() {
+            document.body.classList.remove('dark-mode');
+            lightBtn.classList.add('active');
+            darkBtn.classList.remove('active');
+        };
+        darkBtn.onclick = function() {
+            document.body.classList.add('dark-mode');
+            darkBtn.classList.add('active');
+            lightBtn.classList.remove('active');
+        };
+    </script>
+    <script>
+    document.getElementById('translateViBtn').onclick = function() {
+        const enToVi = {
+            "Introduction to Hanoi": "Giới thiệu về Hà Nội",
+            "Bun cha is a Vietnamese dish consisting of vermicelli noodles, grilled pork patties, and a bowl of sweet, sour, spicy, salty, and sour fish sauce. The dish originated from Northern Vietnam and is the most enduring gift of Hanoi,[1] so it can be considered one of the typical specialties of Hanoi cuisine. Bun cha is similar to grilled pork vermicelli in the Central and Southern regions, but the fish sauce has a lighter taste. Former US President Barack Obama ate this dish.":"Bún chả là một món ăn của Việt Nam, bao gồm bún, chả thịt lợn nướng trên than hoa và bát nước mắm chua cay mặn ngọt. Món ăn xuất xứ từ miền Bắc Việt Nam, là thứ quà có sức sống lâu bền nhất của Hà Nội,[1] nên có thể coi đây là một trong những đặc sản đặc trưng của ẩm thực Hà thành. Bún chả có nét tương tự món bún thịt nướng ở miền Trung và miền Nam, nhưng nước mắm pha có vị thanh nhẹ hơn. Cựu tổng thống Mỹ Barack Obama đã dùng món ăn này.",
+            "Pho (Nom: 𬖾) is a traditional Vietnamese dish, considered one of the typical dishes of Vietnamese cuisine. The main ingredients of pho are pho noodles and broth with thinly sliced ​​beef or chicken, onions. The most suitable beef for cooking pho is meat and bones from local cows (domestic cows, yellow cows). In addition, there are spices such as: soy sauce, pepper, lemon, fish sauce, chili, ... These spices are added depending on the taste of the user. Pho is usually used as a morning snack or a night snack; but in big cities, this dish can be enjoyed all day. In the southern provinces of Vietnam and some other regions, pho is served with a plate of herbs such as onions, bean sprouts and coriander leaves, basil, of which coriander is a typical leaf of pho; however, in Hanoi, this plate of raw vegetables is usually not available. Pho is usually beef pho or chicken pho, but sometimes there are other variations, especially pho rolls, pho with wine sauce, dry pho, stir-fried pho, sour pho, duck pho in Cao Bang, and roasted pork pho in the northern mountainous provinces, dry pho in Gia Lai.":"Phở (chữ Nôm: 𬖾) là một món ăn truyền thống của Việt Nam, được xem là một trong những món ăn tiêu biểu cho nền ẩm thực Việt Nam. Thành phần chính của phở là bánh phở và nước dùng cùng với thịt bò hoặc thịt gà cắt lát mỏng, hành. Thịt bò thích hợp nhất để nấu phở là thịt, xương từ các giống bò ta (bò nội, bò vàng). Ngoài ra còn kèm theo các gia vị như: tương, tiêu, chanh, nước mắm, ớt, ... Những gia vị này được thêm vào tùy theo khẩu vị của người dùng. Phở thông thường được dùng để làm món điểm tâm buổi sáng hoặc lót dạ buổi đêm; nhưng ở các thành phố lớn, món ăn này có thể được thưởng thức cả ngày. Tại các tỉnh phía Nam Việt Nam và một số vùng miền khác, phở được bày kèm với đĩa rau thơm như hành, giá và những lá cây rau mùi, rau húng, trong đó ngò gai là loại lá đặc trưng của phở; tuy nhiên tại Hà Nội thông thường sẽ không có đĩa rau sống này. Phở thường là phở bò hay phở gà, nhưng đôi khi cũng có những biến thể khác, đặc biệt là phở cuốn, phở sốt vang, phở khô, phở xào, phở chua, phở vịt ở Cao Bằng, và phở thịt quay ở các tỉnh miền núi phía Bắc, phở khô ở Gia Lai.",
+            "Hanoi Capital - What You Know and Don't Know": "Thủ đô Hà Nội - những gì bạn đã biết và chưa biết",
+             "Hanoi - Capital of the Socialist Republic of Vietnam": "Hà Nội - Thủ đô của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam",
+             "Northern Center of Vietnam": "Trung tâm phía Bắc Việt Nam",
+             "Hanoi is also famous for other traditional dishes such as banh cuon, com lang Vong, and many attractive street foods.": "Hà Nội còn nổi tiếng với các món ăn truyền thống khác như bánh cuốn, cốm làng Vòng, và nhiều món ăn đường phố hấp dẫn.",
+             "Display Mode": "Chế độ giao diện",
+             "Light Mode": "Chế độ sáng",
+             "Dark Mode": "Chế độ tối",
+             "Giới thiệu Văn Miếu - Quốc Tử Giảm - trường Đại Học đầu tiên của Việt Nam":"Introducing the Temple of Literature - Quoc Tu Giam - the first University of Vietnam",
+             "Ngôn ngữ": "Language",
+             "Table of Contents": "Mục lục",
+             "General Introduction to Hanoi Capital": "Giới thiệu chung về Thủ Đô Hà Nội",
+             "Introduction to Ho Chi Minh Mausoleum":"Giới thiệu về Lăng Chủ tịch Hồ Chí Minh",
+             "Famous Places": "Địa điểm nổi bật",
+             "Giới thiệu chùa Một Cột (Liên Hoa Đài)": "Introducing One Pillar Pagoda (Lotus Station)",
+             "Hoan Kiem Lake - The Gem in the Heart of Hanoi": "Hồ Gươm (Hồ Hoàn Kiếm) - viên ngọc giũa lòng thủ đô Hà Nội",
+             "Introduction to Hoan Kiem Lake": "Giới thiệu về Hồ Gươm",
+             "History of Hoan Kiem Lake": "Lịch sử Hồ Gươm",
+             "One Pillar Pagoda": "Chùa Một Cột",
+             "Introduction to One Pillar Pagoda (Lotus Station)": "Giới thiệu chùa một cột(Liên Hoa Đài)",
+             "History of One Pillar Pagoda": "Lịch sử chùa Một Cột",
+             "Temple of Literature - Imperial Academy": "Văn Miếu - Quốc Tử Giám",
+             "Introduction to Temple of Literature - Imperial Academy - The First University of Vietnam": "Giới thiệu Văn Miếu - Quốc Tử Giảm - Trường Đại Học đầu tiên của Việt Nam",
+             "History of Temple of Literature - Imperial Academy": "Lịch sử xây dựng trường Đại học Văn Miếu Quốc Tử Giám",
+             "Ho Chi Minh Mausoleum": "Lăng Chủ tịch Hồ Chí Minh",
+             "Hanoi Old Quarter": "Phố cổ Hà Nội",
+             "Special Cuisine": "Ẩm thực đặc sắc",
+             "Hanoi is famous for traditional dishes such as pho, bun cha, banh cuon, Vong village green rice, and many delicious street foods.": "Hà Nội nổi tiếng với các món ăn truyền thống như phở, bún chả, bánh cuốn, cốm làng Vòng, và nhiều món ăn đường phố hấp dẫn.",
+             "&copy; 2025 Hanoi Introduction": "&copy; 2025 Giới thiệu Hà Nội",
+             "Translate to Vietnamese": "Dịch sang Tiếng Việt",
+             "Translate to English": "Dịch sang Tiếng Anh",
+             "(View Map)": "(Xem bản đồ)",
+             "Hanoi is the capital of the Socialist Republic of Vietnam, located in the Red River Delta. The city has a long history of more than a thousand years of civilization, and is an important political, cultural, educational and economic center of the country. Hanoi stands out with ancient architectural works, historical relics and green spaces of lakes and parks. The city is also a place where tradition and modernity intersect, giving visitors a deep sense of Vietnamese national identity. Coming to Hanoi, you will experience the vibrant pace of life, enjoy unique cuisine and discover the unique cultural beauty of the thousand-year-old capital.":"Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam, nằm ở vùng đồng bằng sông Hồng. Thành phố có lịch sử lâu đời với hơn một nghìn năm văn hiến, là trung tâm chính trị, văn hóa, giáo dục và kinh tế quan trọng của cả nước. Hà Nội nổi bật với những công trình kiến trúc cổ kính, các di tích lịch sử và không gian xanh mát của những hồ nước, công viên. Thành phố còn là nơi giao thoa giữa truyền thống và hiện đại, mang đến cho du khách cảm nhận sâu sắc về bản sắc dân tộc Việt Nam. Đến với Hà Nội, bạn sẽ được trải nghiệm nhịp sống sôi động, thưởng thức ẩm thực đặc sắc và khám phá những nét đẹp văn hóa độc đáo của thủ đô ngàn năm tuổi.",
+             "It is not an exaggeration to introduce Hoan Kiem Lake, the lake with the most favorable location in the capital, located right in the center of Hoan Kiem district. The lake is a tributary of the Red River, connecting three large neighborhoods: Ly Thai To, Dinh Tien Hoang and Hang Khay. From this location, visitors can easily move to other streets such as: Hang Dao, Hang Ngang, Luong Van Can, Cau Go, Lo Su, ... A little further, you can also reach Trang Tien, Trang Thi, Hang Bai, Nha Tho, ... and 36 streets.":"Không quá lời khi giới thiệu về Hồ Gươm, hồ nước sở hữu vị trí đắc địa nhất Thủ đô khi nằm ngay ở trung tâm quận Hoàn Kiếm. Hồ là một phân lưu của sông Hồng, kết nối giữa ba khu phố lớn là Lý Thái Tổ, Đinh Tiên Hoàng và Hàng Khay. Từ vị trí này, du khách có thể dễ dàng di chuyển sang các con khố khác như: Hàng Đào, Hàng Ngang, Lương Văn Can, Cầu Gỗ, Lò Sũ,… Xa hơn một chút, bạn còn đến được với Tràng Tiền, Tràng Thi, Hàng Bài, Nhà Thờ,… và 36 phố phường.",
+             "In the past, the lake was also called Luc Thuy Lake (because the water was green all year round), Thuy Quan Lake (used for reviewing the navy), Ta Vong and Huu Vong Lakes (during the late Le Dynasty). The name Hoan Kiem appeared in the early 15th century associated with the legend of King Le Loi returning the magic sword to the divine turtle. According to the legend, once when King Le Thai To was out on a boat, a golden turtle suddenly surfaced to demand the king return the sword that the Dragon King had lent him to fight off the invading Ming army. The king immediately returned the sword to the divine turtle and the turtle dived into the water and disappeared. From then on, the lake was named Hoan Kiem Lake. The lake's name was also used to name a central ward of Hanoi (Hoan Kiem ward) and is the only lake in this ward to this day.":"Trước kia, hồ còn có các tên gọi là hồ Lục Thủy (vì nước có màu xanh quanh năm), hồ Thủy Quân (dùng để duyệt thủy binh), hồ Tả Vọng và Hữu Vọng (trong thời Lê mạt). Tên gọi Hoàn Kiếm xuất hiện vào đầu thế kỷ 15 gắn với truyền thuyết vua Lê Lợi trả lại gươm thần cho Rùa thần. Theo truyền thuyết, trong một lần vua Lê Thái Tổ dạo chơi trên thuyền, bỗng một con rùa vàng nổi lên mặt nước đòi nhà vua trả thanh gươm mà Long Vương cho mượn để đánh đuổi quân Minh xâm lược. Nhà vua liền trả gươm cho rùa thần và rùa lặn xuống nước biến mất. Từ đó hồ được lấy tên là hồ Hoàn Kiếm. Tên hồ còn được lấy để đặt cho một phường trung tâm của Hà Nội (phường Hoàn Kiếm) và là hồ nước duy nhất của phường này cho đến ngày nay.",
+             "One Pillar Pagoda, also known as Lien Hoa Dai, is a unique architectural work located in the Dien Huu Pagoda complex in Ba Dinh District, Hanoi. This pagoda stands out with its design of only one large stone pillar supporting the entire shrine above, shaped like a lotus rising from a calm lake.":"Chùa Một Cột, còn gọi là Liên Hoa Đài, là một công trình kiến trúc độc đáo nằm trong quần thể chùa Diên Hựu ở quận Ba Đình, Hà Nội. Ngôi chùa này nổi bật với thiết kế chỉ có một cột đá lớn nâng đỡ toàn bộ phần điện thờ phía trên, tạo hình như một đóa sen vươn lên giữa hồ nước tĩnh lặng.",
+             "The Temple of Literature and the Imperial Academy are two structures built to teach and worship Confucius and other Confucian scholars of the past. The Temple of Literature was built in 1070 under the reign of King Ly Thanh Tong, and the Imperial Academy was built in 1076 under the reign of King Ly Nhan Tong. It can be said that the Ly Dynasty was the period when Vietnamese education developed the most in the feudal dynasties, and the Imperial Academy was the clearest demonstration of King Ly Nhan Tong's determination to improve knowledge. This structure was built to encourage the people's love of learning as well as to seek talents to serve the country. After its construction, studying at the Imperial Academy began in 1076. The students of the Imperial Academy were those who had passed the provincial exams and the examinations at the Ministry of Rites and would be admitted to the Imperial Academy to study, listen to lectures, and write essays to prepare for the provincial and royal exams. Many famous scholars who contributed to the royal court studied at the Imperial Academy.":"Văn miếu Quốc Tử Giám là hai công trình được xây dựng để dạy học và thờ kính Khổng Tử cùng những bậc hiền tài Nho học xưa. Văn miếu được xây dựng vào năm 1070 dưới thời vua Lý Thánh Tông, còn Quốc Tử Giám được xây dựng năm 1076, dưới thời vua Lý Nhân Tông. Có thể nói, thời Lý là giai đoạn giáo dục Việt Nam phát triển nhất trong các thời đại vua chúa phong kiến và công trình Quốc Tử Giám chính là minh chứng rõ nét nhất cho quyết tâm nâng cao học thức của vua Lý Nhân Tông. Đây là công trình được xây nên nhằm cổ vũ tinh thần hiếu học của nhân dân cũng như tìm kiếm nhân tài phục vụ đất nước. Sau khi được xây dựng, việc học tập ở Quốc Tử Giám bắt đầu vào năm 1076. Giám sinh (học trò) Quốc Tử Giám là những sĩ tử đã đỗ kì thi Hương, vượt qua kỳ kiểm tra ở Bộ Lễ sẽ được vào Quốc Tử Giám học tập, nghe giảng sách, làm văn để chuẩn bị thi Hội, thi Đình. Rất nhiều học giả nổi tiếng có công cho triều đình đã học tập tại Quốc Tử Giám.",
+             "Ly Dynasty: The Temple of Literature was built in 1070 under King Ly Thanh Tong, both as a place to worship Confucius and sages and as the first royal school for Crown Prince Ly Can Duc (later King Ly Nhan Tong). In 1076, King Ly Nhan Tong established Quoc Tu Giam - the first university in Vietnam, for the children of kings and nobles. Tran Dynasty: In 1253, King Tran Thai Tong changed the name to Quoc Hoc Vien, expanding the student body, including children of ordinary people with excellent academic performance. Chu Van An was appointed as Vice-Rector of Quoc Tu Giam and after his death was worshiped at the Temple of Literature. Later Le Dynasty: Confucianism developed strongly. In 1484, King Le Thanh Tong erected the Doctorate stele from the 1442 examination, each examination had a stele placed on the back of a turtle. The erection of the stele took place over many periods, sometimes interrupted, but continued until the end of the Le Dynasty. Nguyen Dynasty: Quoc Tu Giam was established in Hue. The Temple of Literature in Thang Long became the Temple of Literature in Hanoi. The Governor of the Northern Citadel, Nguyen Van Thanh, built the Khue Van Cac. This area was later used to build the Khai Thanh Temple to worship Confucius' parents. Modern times: In 1947, the French colonialists destroyed part of the Temple of Literature with artillery. Today, the Thai Hoc area was restored on the old site of the Imperial Academy with traditional architecture, including the Front Hall, Back Hall, Left Hall, Right Hall, Bell House, and Drum House.":"Thời Lý: Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông, vừa là nơi thờ Khổng Tử và các bậc hiền triết, vừa là trường học hoàng gia đầu tiên cho Thái tử Lý Càn Đức (sau là vua Lý Nhân Tông). Năm 1076, vua Lý Nhân Tông lập Quốc Tử Giám – trường đại học đầu tiên của Việt Nam, dành cho con vua và quý tộc. Thời Trần: Năm 1253, vua Trần Thái Tông đổi tên thành Quốc Học viện, mở rộng đối tượng học sinh, bao gồm cả con dân thường có học lực xuất sắc. Chu Văn An được bổ nhiệm làm Tư nghiệp Quốc Tử Giám và sau khi mất được thờ tại Văn Miếu. Thời Hậu Lê: Nho giáo phát triển mạnh. Năm 1484, vua Lê Thánh Tông cho dựng bia Tiến sĩ từ khoa thi năm 1442, mỗi khoa một bia đặt trên lưng rùa. Việc dựng bia diễn ra qua nhiều thời kỳ, có lúc bị gián đoạn, nhưng vẫn được tiếp tục đến cuối triều Lê. Thời Nguyễn: Quốc Tử Giám được lập tại Huế. Văn Miếu Thăng Long trở thành Văn Miếu Hà Nội. Tổng trấn Bắc Thành Nguyễn Văn Thành xây thêm Khuê Văn Các. Khu vực này sau được xây đền Khải Thánh để thờ cha mẹ Khổng Tử. Thời hiện đại: Năm 1947, thực dân Pháp phá hủy một phần Văn Miếu bằng pháo. Ngày nay, khu Thái Học được phục dựng trên nền cũ của Quốc Tử Giám với kiến trúc truyền thống, gồm Tiền đường, Hậu đường, Tả vu, Hữu vu, nhà chuông, nhà trống.",
+             "History and life of President Ho Chi Minh":"Lịch sử và cuộc đời của chủ tịch Hồ Chí Minh",
+             "History and Legends surrounding Thang Long Imperial Citadel":"Lịch sử và Truyền thuyết xoay xung quanh Hoàng Thành Thăng Long",
+             "Thang Long Imperial Citadel":"Hoàng Thành Thăng Long",
+             "Introduction to Thang Long Imperial Citadel":"Giới thiệu Hoàng Thành Thăng Long",
+            "Tong Duy Tan Food Street":"Phố ẩm thực Tống Duy Tân",
+            "Famous dishes of Hanoi":"Các món nổi tiếng của Hà Nội",
+            "Pho":"Phở",
+            "Bun Cha":"Bún chả",
+            "Ho Chi Minh Mausoleum, also known as Ho Chi Minh Mausoleum, Uncle Ho Mausoleum, is where the body of President Ho Chi Minh is kept. The mausoleum was officially started on September 2, 1973, at the old stage in the middle of Ba Dinh Square, where President Ho Chi Minh used to preside over important meetings. The mausoleum was inaugurated on August 29, 1975, consisting of 3 layers with a height of 21.6 m, a width of 41.2 m; the lower layer is shaped like a three-step staircase, the middle layer is the central structure of the mausoleum including the body room and corridors, stairs. The outside of the mausoleum is covered with gray granite, the inside is made of polished gray and red stone. Around the 4 sides are rows of square marble columns, the top layer is the mausoleum roof in a three-step shape. On the main facade is the inscription: 'PRESIDENT HO-CHI-MINH' in ripe plum-colored pink stone. Surrounding the mausoleum are gardens where more than 250 species of plants are grown from all over Vietnam.":"Lăng Chủ tịch Hồ Chí Minh, còn gọi là Lăng Hồ Chủ tịch, Lăng Bác, là nơi gìn giữ thi hài Chủ tịch Hồ Chí Minh. Lăng được chính thức khởi công ngày 2 tháng 9 năm 1973, tại vị trí lễ đài cũ giữa Quảng trường Ba Đình, nơi Chủ tịch Hồ Chí Minh từng chủ trì các cuộc gặp mặt quan trọng. Lăng được khánh thành vào ngày 29 tháng 8 năm 1975, gồm 3 lớp với chiều cao 21,6 m, chiều rộng 41,2 m; lớp dưới tạo dáng bậc thềm tam cấp, lớp giữa là kết cấu trung tâm của lăng gồm phòng thi hài và những hành lang, những cầu thang. Bên ngoài lăng được ốp bằng đá granite xám, bên trong làm bằng đá xám và đỏ được đánh bóng. Quanh 4 mặt là những hàng cột vuông bằng đá hoa cương, lớp trên cùng là mái lăng hình tam cấp. Ở mặt chính có dòng chữ: 'CHỦ TỊCH HỒ-CHÍ-MINH' bằng đá hồng màu mận chín. Xung quanh lăng là các khu vườn nơi hơn 250 loài thực vật được trồng từ khắp mọi miền của Việt Nam.",
+            "Ho Chi Minh (Chinese: 胡志明; May 19, 1890 – September 2, 1969), born Nguyen Sinh Cung (Chinese: 阮生恭), also known in Vietnam as Uncle Ho, was a Vietnamese revolutionary and politician. He was the founder of the Communist Party of Vietnam, President of the Democratic Republic of Vietnam from 1945–1969, Prime Minister of the Democratic Republic of Vietnam from 1945–1955, General Secretary of the Central Committee of the Vietnam Workers' Party from 1956–1960, Chairman of the Central Committee of the Vietnam Workers' Party from 1951 until his death. During his life and work before coming to power, Ho Chi Minh traveled to many countries and continents, and is said to have used between 50[1] and 200 different aliases.[2] In terms of political ideology, Ho Chi Minh was a Marxist–Leninist. He was the leader of the Viet Minh independence movement that carried out the August Revolution in 1945. He was also the one who drafted and read the Declaration of Independence that established the Democratic Republic of Vietnam, and became President after the general election in 1946. During the Indochina War and the Vietnam War, Ho Chi Minh was a key figure in the leadership of the Democratic Republic of Vietnam and the National Liberation Front of South Vietnam. Ho Chi Minh gradually reduced his political activities in 1965 due to health reasons and passed away in 1969. In 1975, the Democratic Republic of Vietnam won, the two regions of Vietnam were unified, leading to the birth of the Socialist Republic of Vietnam in 1976. Saigon - Gia Dinh City was renamed Ho Chi Minh City to honor him as well as this event. In addition to his political activities, Ho Chi Minh was also a writer, poet and journalist with many works written in Vietnamese, Chinese and French.":"Hồ Chí Minh (chữ Nho: 胡志明; 19 tháng 5 năm 1890 – 2 tháng 9 năm 1969), tên khai sinh là Nguyễn Sinh Cung (chữ Nho: 阮生恭), còn được gọi phổ biến tại Việt Nam với tên gọi Bác Hồ, là một nhà cách mạng và chính khách người Việt Nam. Ông là người sáng lập Đảng Cộng sản Việt Nam, từng là Chủ tịch nước Việt Nam Dân chủ Cộng hòa từ 1945–1969, Thủ tướng Việt Nam Dân chủ Cộng hòa trong những năm 1945–1955, Tổng Bí thư Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ 1956–1960, Chủ tịch Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ năm 1951 cho đến khi qua đời. Trong quãng thời gian sinh sống và hoạt động trước khi lên nắm quyền, Hồ Chí Minh đã đi qua nhiều quốc gia và châu lục, ông được cho là đã sử dụng từ 50[1] đến 200 bí danh khác nhau.[2] Về mặt tư tưởng chính trị, Hồ Chí Minh là một người theo chủ nghĩa Marx–Lenin. Ông là nhà lãnh đạo phong trào độc lập Việt Minh tiến hành Cách mạng Tháng Tám năm 1945. Ông cũng là người đã soạn thảo, đọc bản Tuyên ngôn độc lập thành lập nước Việt Nam Dân chủ Cộng hòa, và trở thành Chủ tịch nước sau cuộc tổng tuyển cử năm 1946. Trong giai đoạn diễn ra chiến tranh Đông Dương và chiến tranh Việt Nam, Hồ Chí Minh là nhân vật chủ chốt trong hàng ngũ lãnh đạo của Việt Nam Dân chủ Cộng hòa và Mặt trận Dân tộc Giải phóng miền Nam Việt Nam. Hồ Chí Minh giảm dần hoạt động chính trị vào năm 1965 vì lý do sức khỏe rồi qua đời vào năm 1969. Năm 1975, Việt Nam Dân chủ Cộng hòa chiến thắng, hai miền Việt Nam được thống nhất, dẫn đến sự ra đời của nhà nước Cộng hòa Xã hội chủ nghĩa Việt Nam vào năm 1976. Thành phố Sài Gòn – Gia Định được đổi tên thành Thành phố Hồ Chí Minh để tôn vinh ông cũng như sự kiện này. Ngoài hoạt động chính trị, Hồ Chí Minh cũng là nhà văn, nhà thơ và nhà báo với nhiều tác phẩm viết bằng tiếng Việt, tiếng Hán và tiếng Pháp.",
+            "Thang Long Imperial Citadel is a complex of historical and cultural relics in Hanoi, with a history of more than 1,000 years, and was the center of power of many feudal dynasties in Vietnam. It includes many valuable architectural works such as Doan Mon, Dien Kinh Thien, Ky Dai, and the archaeological site at 18 Hoang Dieu. The Imperial Citadel was recognized by UNESCO as a World Cultural Heritage in 2010 for its unique historical, cultural, and architectural values.":"Hoàng thành Thăng Long là quần thể di tích lịch sử và văn hóa tại Hà Nội, có lịch sử hơn 1.000 năm, từng là trung tâm quyền lực của nhiều triều đại phong kiến Việt Nam. Nơi đây bao gồm nhiều công trình kiến trúc giá trị như Đoan Môn, Điện Kính Thiên, Kỳ Đài, và khu khảo cổ 18 Hoàng Diệu. Hoàng thành được UNESCO công nhận là Di sản Văn hóa Thế giới vào năm 2010 nhờ giá trị lịch sử, văn hóa, và kiến trúc độc đáo.",
+            "In 1009, Ly Cong Uan ascended the throne, founded the Ly dynasty, took the reign name Thai To, and established the capital in Hoa Lu (Ninh Binh). Hoa Lu was the capital of Dai Co Viet under the two dynasties of Dinh (968-979) and Tien Le (980-1009), located in a rugged mountainous area with the terrain of 'advancing can win, retreating can protect'. However, the 35-year-old king decided to move the capital to Dai La citadel. In the Proclamation on the Transfer of the Capital, Ly Cong Uan wrote that Dai La citadel 'is located at the center of heaven and earth, with the position of a coiled dragon and a sitting tiger, in the middle of the South, North, East, and West, with convenient mountains and rivers in front and behind. This area has a wide and flat land, high and bright terrain, the people do not suffer from low and dark places, all things are extremely fresh and prosperous. Looking at the whole country of Viet, this is a place of victory, truly an important gathering place of the four directions, truly the place where the capital will be raised forever'. In Dai Viet Su Ky Tien Bien, historian Ngo Thi Si highly appreciated Ly Cong Uan's move of the capital: 'Long Do land is where Cao Bien established his capital, Tan Vien mountain firmly supported a territory, Phu Luong river is like a moat created by heaven, thousands of miles flat, the people are rich, the West connects with Son Tay, Tuyen Hung, the North reaches Ninh Soc, Kinh Bac. The Southeast is transported by boat, Can Xuong area is communicated by post, where the four directions of the country, the four directions pay homage, the mountain is the flap of the shirt covering, the river is the belt, behind is the river, in front is the sea, the terrain is powerful but dangerous, wide and long. It can be a majestic place for the king to live, the throne is stable. The terrain of Vietnam is no better than this place... Ly Thai To ascended the throne, did not rush to do other things but first planned to decide on the capital, set up the peak, considering his decisiveness, wisdom, heroic strategy, truly ordinary kings cannot do it'. In the fall of 1010, Ly Cong Uan and his royal court and generals sailed to Dai La. In a dream, he named the capital Thang Long, meaning 'flying dragon'. As early as 1010, when he first established Thang Long as the capital, Ly Cong Uan started building the Imperial Citadel and a series of palaces inside the Imperial Citadel. The Imperial Citadel was built of earth, with a moat outside and four gates: Tuong Phu in the East, Quang Phuc in the West, Dai Hung in the South, and Dieu Duc in the North. Although there are still different opinions, based on historical documents and remaining relics, it can be determined that Tuong Phu gate opened to the Eastern Market and the bustling commercial area of ​​Giang Khau ward and Bach Ma temple.":"Năm 1009, Lý Công Uẩn lên ngôi, sáng lập ra vương triều Lý, lấy niên hiệu là Thái Tổ, đóng đô ở Hoa Lư (Ninh Bình). Hoa Lư là kinh đô của nước Đại Cồ Việt dưới hai triều Đinh (968-979) và Tiền Lê (980-1009), nằm ở vùng núi non hiểm trở với địa thế 'tiến khả dĩ công, thoái khả dĩ thủ' (tiến có thể đánh thắng, thoái có thể bảo vệ). Song vị vua 35 tuổi quyết định dời đô ra thành Đại La. Trong Chiếu dời đô, Lý Công Uẩn viết, thành Đại La “Ở vào nơi trung tâm trời đất, được thế rồng cuộn hổ ngồi, chính giữa Nam Bắc Đông Tây, tiện nghi núi sông sau trước. Vùng này mặt đất rộng mà bằng phẳng, thế đất cao mà sáng sủa, dân cư không khổ thấp trũng tối tăm, muôn vật hết sức tươi tốt phồn thịnh. Xem khắp nước Việt đó là nơi thắng địa, thực là chỗ tụ hội quan yếu của bốn phương, đúng là nơi thượng đô kinh sư mãi muôn đời”. Trong Đại Việt sử ký tiền biên, sử gia Ngô Thì Sĩ đánh giá rất cao việc dời đô của Lý Công Uẩn: 'Đất Long Đỗ là nơi Cao Biền đóng đô ở đấy, núi Tản Viên chống vững một cõi, sông Phú Lương như hào trời sinh ra, ngàn dặm bằng phẳng, trăm họ giàu có, phía Tây thông với Sơn Tây, Tuyên Hưng, phía Bắc thấu đến Ninh Sóc, Kinh Bắc. Miền Đông Nam thì vận chuyển bằng thuyền, miền Cần Xương thì liên lạc bằng trạm là nơi bốn phương của nước, bốn phương chầu về, núi là vạt áo che, sông là dải đai thắt, sau lưng là sông, trước mặt là biển, địa thế hùng mạnh mà hiểm, rộng mà dài. Có thể làm nơi vua ở hùng tráng, ngôi báu vững bền. Hình thế nước Việt không nơi nào hơn được nơi này... Lý Thái Tổ lên ngôi, chưa vội làm việc khác mà trước tiên mưu tính việc định đô, đặt đỉnh, xét về sự quyết đoán sáng suốt, mưu kế anh hùng, thực những vua tầm thường không thể làm được'. Mùa Thu năm 1010, Lý Công Uẩn cùng hoàng triều và tướng lĩnh giong thuyền về Đại La. Trong một giấc mơ, ông đặt tên kinh thành là Thăng Long với nghĩa 'rồng bay'. Ngay từ năm 1010, khi mới định đô Thăng Long, Lý Công Uẩn đã khởi công xây dựng Hoàng thành và hàng loạt cung điện ở trong Hoàng thành. Hoàng thành đắp bằng đất, phía ngoài có hào, mở bốn cửa: Tường Phù ở phía Đông, Quảng Phúc ở phía Tây, Đại Hưng ở phía Nam, Diệu Đức ở phía Bắc. Tuy còn những ý kiến khác nhau, nhưng căn cứ vào sử liệu và di tích còn lại, có thể xác định cửa Tường Phù mở ra phía Chợ Đông và khu phố buôn bán tấp nập của phường Giang Khẩu và đền Bạch Mã.",
+            "Hanoi’s Old Quarter is a historic area of ​​about 100 hectares with 76 streets in 10 wards in Hoan Kiem District, famous for its streets specializing in selling specific goods such as Hang Bac (gold and silver), Hang Ma (worship items, decorations), and Hang Dao (fabrics). Visitors can visit places such as Hoan Kiem Lake, Dong Xuan Market, Ma May Ancient House, and enjoy the bustling atmosphere of the Old Quarter Night Market on weekends.":"Phố cổ Hà Nội là khu vực lịch sử gồm khoảng 100 ha với 76 tuyến phố thuộc 10 phường ở quận Hoàn Kiếm, nổi tiếng với các khu phố chuyên bán từng mặt hàng cụ thể như Hàng Bạc (vàng bạc), Hàng Mã (đồ thờ cúng, trang trí), và Hàng Đào (vải vóc). Du khách có thể tham quan các địa điểm như Hồ Hoàn Kiếm, Chợ Đồng Xuân, Nhà Cổ Mã Mây, và tận hưởng không khí nhộn nhịp của Chợ đêm phố cổ vào cuối tuần.",
+            "Tong Duy Tan Street is not only famous for its unique cafes but also known as a place that gathers countless delicious dishes, from snacks to full meals, serving the diverse needs of diners. Tong Duy Tan Street is about 200m long, stretching from Tran Phu Street to Dien Bien Phu Street. The street is named after Dr. Tong Duy Tan (1837-1892), a famous patriot from Vinh Loc District, Thanh Hoa Province. During the Nguyen Dynasty, this street belonged to the East - South Gate area of ​​the Citadel, now in Hang Bong Ward, Hoan Kiem District. Having gone through many names such as Bui Ba Ky or Ky Dong, in 1964, the street was officially named Tong Duy Tan. Previously, the street mainly served Vietnamese customers at night, but now this culinary street is bustling day and night with many restaurants and cafes attracting many tourists. Tong Duy Tan Street has become a familiar dining spot for Hanoians. Some people jokingly say that if you don't know what to eat, go to Tong Duy Tan street because it is a place that brings together traditional Vietnamese dishes and modern dishes to serve international guests. The rich menu with specialties from three regions makes this street a stopover.":"Phố Tống Duy Tân không chỉ nổi tiếng bởi những quán cà phê độc đáo mà còn được biết đến là nơi tập trung vô số món ăn ngon, từ đồ ăn nhẹ đến các bữa ăn no, phục vụ đa dạng nhu cầu của thực khách. Phố Tống Duy Tân dài khoảng 200m, kéo từ phố Trần Phú tới đường Điện Biên Phủ. Tên phố được đặt theo Tiến sĩ Tống Duy Tân (1837-1892), một chí sĩ yêu nước nổi tiếng quê ở huyện Vĩnh Lộc, tỉnh Thanh Hóa. Vào thời Nguyễn, con đường này thuộc khu vực cửa Đông - Nam Thành cổ, nay thuộc phường Hàng Bông, quận Hoàn Kiếm. Trải qua nhiều tên gọi như Bùi Bá Ký hay Kỳ Đồng, đến năm 1964, phố chính thức mang tên Tống Duy Tân. Trước đây, phố chủ yếu phục vụ khách Việt ăn đêm, nhưng hiện nay con phố ẩm thực này sôi động cả ngày lẫn đêm với nhiều quán ăn và quán cà phê thu hút nhiều du khách. Phố Tống Duy Tân đã trở thành điểm ăn uống quen thuộc của người dân Hà Nội. Có người ví vui rằng nếu bạn không biết ăn gì, hãy lên phố Tống Duy Tân bởi nơi hội tụ từ các món truyền thống Việt Nam đến các món hiện đại phục vụ cả khách quốc tế. Thực đơn phong phú với đặc sản ba miền, khiến phố này trở thành điểm dừng chân",
+        };
+        function translateText(node) {
+            if (node.nodeType === 3) {
+                let txt = node.nodeValue.trim();
+                if (enToVi[txt]) node.nodeValue = enToVi[txt];
+            } else if (node.nodeType === 1 && node.childNodes.length) {
+                if (node.tagName === 'BUTTON' && enToVi[node.textContent.trim()]) {
+                    node.textContent = enToVi[node.textContent.trim()];
+                } else {
+                    node.childNodes.forEach(translateText);
+                }
+            }
+        }
+        translateText(document.body);
+        document.title = enToVi[document.title] || document.title;
+
+        var amThucP = document.querySelector('#am-thuc + p');
+        if (amThucP && enToVi[amThucP.textContent.trim()]) {
+            amThucP.textContent = enToVi[amThucP.textContent.trim()];
+        }
+
+        // Add/remove 'active' for language buttons
+        document.getElementById('translateViBtn').classList.add('active');
+        document.getElementById('translateBtn').classList.remove('active');
+    }
+    </script>
+    <script>
+    document.getElementById('translateBtn').onclick = function() {
+        const viToEn = {
+            "Giới thiệu Hà Nội":"Introduction to Hanoi",
+            "Bún chả là một món ăn của Việt Nam, bao gồm bún, chả thịt lợn nướng trên than hoa và bát nước mắm chua cay mặn ngọt. Món ăn xuất xứ từ miền Bắc Việt Nam, là thứ quà có sức sống lâu bền nhất của Hà Nội,[1] nên có thể coi đây là một trong những đặc sản đặc trưng của ẩm thực Hà thành. Bún chả có nét tương tự món bún thịt nướng ở miền Trung và miền Nam, nhưng nước mắm pha có vị thanh nhẹ hơn. Cựu tổng thống Mỹ Barack Obama đã dùng món ăn này.":"Bun cha is a Vietnamese dish consisting of vermicelli noodles, grilled pork patties, and a bowl of sweet, sour, spicy, salty, and sour fish sauce. The dish originated from Northern Vietnam and is the most enduring gift of Hanoi,[1] so it can be considered one of the typical specialties of Hanoi cuisine. Bun cha is similar to grilled pork vermicelli in the Central and Southern regions, but the fish sauce has a lighter taste. Former US President Barack Obama ate this dish.",
+            "Phở (chữ Nôm: 𬖾) là một món ăn truyền thống của Việt Nam, được xem là một trong những món ăn tiêu biểu cho nền ẩm thực Việt Nam. Thành phần chính của phở là bánh phở và nước dùng cùng với thịt bò hoặc thịt gà cắt lát mỏng, hành. Thịt bò thích hợp nhất để nấu phở là thịt, xương từ các giống bò ta (bò nội, bò vàng). Ngoài ra còn kèm theo các gia vị như: tương, tiêu, chanh, nước mắm, ớt, ... Những gia vị này được thêm vào tùy theo khẩu vị của người dùng. Phở thông thường được dùng để làm món điểm tâm buổi sáng hoặc lót dạ buổi đêm; nhưng ở các thành phố lớn, món ăn này có thể được thưởng thức cả ngày. Tại các tỉnh phía Nam Việt Nam và một số vùng miền khác, phở được bày kèm với đĩa rau thơm như hành, giá và những lá cây rau mùi, rau húng, trong đó ngò gai là loại lá đặc trưng của phở; tuy nhiên tại Hà Nội thông thường sẽ không có đĩa rau sống này. Phở thường là phở bò hay phở gà, nhưng đôi khi cũng có những biến thể khác, đặc biệt là phở cuốn, phở sốt vang, phở khô, phở xào, phở chua, phở vịt ở Cao Bằng, và phở thịt quay ở các tỉnh miền núi phía Bắc, phở khô ở Gia Lai.":"Pho (Nom: 𬖾) is a traditional Vietnamese dish, considered one of the typical dishes of Vietnamese cuisine. The main ingredients of pho are pho noodles and broth with thinly sliced ​​beef or chicken, onions. The most suitable beef for cooking pho is meat and bones from local cows (domestic cows, yellow cows). In addition, there are spices such as: soy sauce, pepper, lemon, fish sauce, chili, ... These spices are added depending on the taste of the user. Pho is usually used as a morning snack or a night snack; but in big cities, this dish can be enjoyed all day. In the southern provinces of Vietnam and some other regions, pho is served with a plate of herbs such as onions, bean sprouts and coriander leaves, basil, of which coriander is a typical leaf of pho; however, in Hanoi, this plate of raw vegetables is usually not available. Pho is usually beef pho or chicken pho, but sometimes there are other variations, especially pho rolls, pho with wine sauce, dry pho, stir-fried pho, sour pho, duck pho in Cao Bang, and roasted pork pho in the northern mountainous provinces, dry pho in Gia Lai.",
+            "Thủ đô Hà Nội - những gì bạn đã biết và chưa biết": "Hanoi Capital - What You Know and Don't Know",
+            "Hà Nội còn nổi tiếng với các món ăn truyền thống khác như bánh cuốn, cốm làng Vòng, và nhiều món ăn đường phố hấp dẫn.":"Hanoi is also famous for other traditional dishes such as banh cuon, com lang Vong, and many attractive street foods.",
+             "Hà Nội - Thủ đô của nước Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam": "Hanoi - Capital of the Socialist Republic of Vietnam",
+             "Trung tâm phía Bắc Việt Nam": "Northern Center of Vietnam",
+             "Chế độ giao diện": "Display Mode",
+             "Chế độ sáng": "Light Mode",
+             "Chế độ tối": "Dark Mode",
+             "Ngôn ngữ": "Language",
+             "Giới thiệu Văn Miếu - Quốc Tử Giảm - trường Đại Học đầu tiên của Việt Nam":"Introducing the Temple of Literature - Quoc Tu Giam - the first University of Vietnam",
+             "Mục lục": "Table of Contents",
+             "Giới thiệu chung về Thủ Đô Hà Nội": "General Introduction to Hanoi Capital",
+             "Giới thiệu về Lăng Chủ tịch Hồ Chí Minh":"Introduction to Ho Chi Minh Mausoleum",
+             "Địa điểm nổi bật": "Famous Places",
+             "Giới thiệu chùa Một Cột (Liên Hoa Đài)": "Introducing One Pillar Pagoda (Lotus Station)",
+             "Hồ Gươm (Hồ Hoàn Kiếm) - viên ngọc giũa lòng thủ đô Hà Nội": "Hoan Kiem Lake - The Gem in the Heart of Hanoi",
+             "Giới thiệu về Hồ Gươm": "Introduction to Hoan Kiem Lake",
+             "Lịch sử Hồ Gươm": "History of Hoan Kiem Lake",
+             "Chùa Một Cột": "One Pillar Pagoda",
+             "Giới thiệu chùa một cột(Liên Hoa Đài)": "Introduction to One Pillar Pagoda (Lotus Station)",
+             "Lịch sử chùa Một Cột": "History of One Pillar Pagoda",
+             "Văn Miếu - Quốc Tử Giám": "Temple of Literature - Imperial Academy",
+             "Giới thiệu Văn Miếu - Quốc Tử Giảm - Trường Đại Học đầu tiên của Việt Nam": "Introduction to Temple of Literature - Imperial Academy - The First University of Vietnam",
+             "Lịch sử xây dựng trường Đại học Văn Miếu Quốc Tử Giám": "History of Temple of Literature - Imperial Academy",
+            "Lăng Chủ tịch Hồ Chí Minh": "Ho Chi Minh Mausoleum",
+             "Phố cổ Hà Nội": "Hanoi Old Quarter",
+             "Ẩm thực đặc sắc": "Special Cuisine",
+             "Hà Nội nổi tiếng với các món ăn truyền thống như phở, bún chả, bánh cuốn, cốm làng Vòng, và nhiều món ăn đường phố hấp dẫn.": "Hanoi is famous for traditional dishes such as pho, bun cha, banh cuon, Vong village green rice, and many delicious street foods.",
+             "&copy; 2025 Giới thiệu Hà Nội": "&copy; 2025 Hanoi Introduction",
+             "Dịch sang Tiếng Việt": "Translate to Vietnamese",
+             "Dịch sang Tiếng Anh": "Translate to English",
+            "(Xem bản đồ)": "(View Map)",
+             "Hà Nội là thủ đô của nước Cộng hòa Xã hội Chủ nghĩa Việt Nam, nằm ở vùng đồng bằng sông Hồng. Thành phố có lịch sử lâu đời với hơn một nghìn năm văn hiến, là trung tâm chính trị, văn hóa, giáo dục và kinh tế quan trọng của cả nước. Hà Nội nổi bật với những công trình kiến trúc cổ kính, các di tích lịch sử và không gian xanh mát của những hồ nước, công viên. Thành phố còn là nơi giao thoa giữa truyền thống và hiện đại, mang đến cho du khách cảm nhận sâu sắc về bản sắc dân tộc Việt Nam. Đến với Hà Nội, bạn sẽ được trải nghiệm nhịp sống sôi động, thưởng thức ẩm thực đặc sắc và khám phá những nét đẹp văn hóa độc đáo của thủ đô ngàn năm tuổi.":"Hanoi is the capital of the Socialist Republic of Vietnam, located in the Red River Delta. The city has a long history of more than a thousand years of civilization, and is an important political, cultural, educational and economic center of the country. Hanoi stands out with ancient architectural works, historical relics and green spaces of lakes and parks. The city is also a place where tradition and modernity intersect, giving visitors a deep sense of Vietnamese national identity. Coming to Hanoi, you will experience the vibrant pace of life, enjoy unique cuisine and discover the unique cultural beauty of the thousand-year-old capital.",
+             "Không quá lời khi giới thiệu về Hồ Gươm, hồ nước sở hữu vị trí đắc địa nhất Thủ đô khi nằm ngay ở trung tâm quận Hoàn Kiếm. Hồ là một phân lưu của sông Hồng, kết nối giữa ba khu phố lớn là Lý Thái Tổ, Đinh Tiên Hoàng và Hàng Khay. Từ vị trí này, du khách có thể dễ dàng di chuyển sang các con khố khác như: Hàng Đào, Hàng Ngang, Lương Văn Can, Cầu Gỗ, Lò Sũ,… Xa hơn một chút, bạn còn đến được với Tràng Tiền, Tràng Thi, Hàng Bài, Nhà Thờ,… và 36 phố phường.":"It is not an exaggeration to introduce Hoan Kiem Lake, the lake with the most favorable location in the capital, located right in the center of Hoan Kiem district. The lake is a tributary of the Red River, connecting three large neighborhoods: Ly Thai To, Dinh Tien Hoang and Hang Khay. From this location, visitors can easily move to other streets such as: Hang Dao, Hang Ngang, Luong Van Can, Cau Go, Lo Su, ... A little further, you can also reach Trang Tien, Trang Thi, Hang Bai, Nha Tho, ... and 36 streets.",
+             "Trước kia, hồ còn có các tên gọi là hồ Lục Thủy (vì nước có màu xanh quanh năm), hồ Thủy Quân (dùng để duyệt thủy binh), hồ Tả Vọng và Hữu Vọng (trong thời Lê mạt). Tên gọi Hoàn Kiếm xuất hiện vào đầu thế kỷ 15 gắn với truyền thuyết vua Lê Lợi trả lại gươm thần cho Rùa thần. Theo truyền thuyết, trong một lần vua Lê Thái Tổ dạo chơi trên thuyền, bỗng một con rùa vàng nổi lên mặt nước đòi nhà vua trả thanh gươm mà Long Vương cho mượn để đánh đuổi quân Minh xâm lược. Nhà vua liền trả gươm cho rùa thần và rùa lặn xuống nước biến mất. Từ đó hồ được lấy tên là hồ Hoàn Kiếm. Tên hồ còn được lấy để đặt cho một phường trung tâm của Hà Nội (phường Hoàn Kiếm) và là hồ nước duy nhất của phường này cho đến ngày nay.":"In the past, the lake was also called Luc Thuy Lake (because the water was green all year round), Thuy Quan Lake (used for reviewing the navy), Ta Vong and Huu Vong Lakes (during the late Le Dynasty). The name Hoan Kiem appeared in the early 15th century associated with the legend of King Le Loi returning the magic sword to the divine turtle. According to the legend, once when King Le Thai To was out on a boat, a golden turtle suddenly surfaced to demand the king return the sword that the Dragon King had lent him to fight off the invading Ming army. The king immediately returned the sword to the divine turtle and the turtle dived into the water and disappeared. From then on, the lake was named Hoan Kiem Lake. The lake's name was also used to name a central ward of Hanoi (Hoan Kiem ward) and is the only lake in this ward to this day.",
+             "Chùa Một Cột, còn gọi là Liên Hoa Đài, là một công trình kiến trúc độc đáo nằm trong quần thể chùa Diên Hựu ở quận Ba Đình, Hà Nội. Ngôi chùa này nổi bật với thiết kế chỉ có một cột đá lớn nâng đỡ toàn bộ phần điện thờ phía trên, tạo hình như một đóa sen vươn lên giữa hồ nước tĩnh lặng.":"One Pillar Pagoda, also known as Lien Hoa Dai, is a unique architectural work located in the Dien Huu Pagoda complex in Ba Dinh District, Hanoi. This pagoda stands out with its design of only one large stone pillar supporting the entire shrine above, shaped like a lotus rising from a calm lake.",
+             "Chùa Một Cột có tên ban đầu là Liên Hoa Đài (蓮花臺) tức là Đài Hoa Sen với lối kiến trúc độc đáo: một điện thờ đặt trên một cột trụ duy nhất. Liên Hoa Đài là công trình nổi tiếng nhất nằm trong quần thể kiến trúc Chùa Diên Hựu (延祐寺), có nghĩa là ngôi chùa 'Phúc lành dài lâu'. Công trình Chùa Diên Hựu nguyên bản được xây vào thời vua Lý Thái Tông mùa đông năm 1049 và hoàn thiện vào năm 1105 thời vua Lý Nhân Tông nay đã không còn. Công trình Liên Hoa Đài hiện tại nằm ở Hà Nội là một phiên bản được chỉnh sửa nhiều lần qua các thời kỳ, bị Pháp phá huỷ khi rút khỏi Hà Nội ngày 11/9/1954 và được dựng lại năm 1955 bởi kiến trúc sư Nguyễn Bá Lăng theo kiến trúc để lại từ thời Nguyễn. Đây là ngôi chùa có kiến trúc độc đáo ở Việt Nam.":"The One Pillar Pagoda was originally called Lien Hoa Dai (蓮花臺), meaning Lotus Platform, with a unique architectural style: a shrine placed on a single pillar. Lien Hoa Dai is the most famous structure in the architectural complex of Dien Huu Pagoda (延祐寺), meaning 'Long-lasting Blessings' Pagoda. The original Dien Huu Pagoda was built during the reign of King Ly Thai Tong in the winter of 1049 and completed in 1105 during the reign of King Ly Nhan Tong, but no longer exists. The current Lien Hoa Dai structure in Hanoi is a version that has been modified many times over the years, destroyed by the French when they withdrew from Hanoi on September 11, 1954, and rebuilt in 1955 by architect Nguyen Ba Lang according to the architecture left from the Nguyen Dynasty. This is a pagoda with unique architecture in Vietnam.",
+             "Văn miếu Quốc Tử Giám là hai công trình được xây dựng để dạy học và thờ kính Khổng Tử cùng những bậc hiền tài Nho học xưa. Văn miếu được xây dựng vào năm 1070 dưới thời vua Lý Thánh Tông, còn Quốc Tử Giám được xây dựng năm 1076, dưới thời vua Lý Nhân Tông. Có thể nói, thời Lý là giai đoạn giáo dục Việt Nam phát triển nhất trong các thời đại vua chúa phong kiến và công trình Quốc Tử Giám chính là minh chứng rõ nét nhất cho quyết tâm nâng cao học thức của vua Lý Nhân Tông. Đây là công trình được xây nên nhằm cổ vũ tinh thần hiếu học của nhân dân cũng như tìm kiếm nhân tài phục vụ đất nước. Sau khi được xây dựng, việc học tập ở Quốc Tử Giám bắt đầu vào năm 1076. Giám sinh (học trò) Quốc Tử Giám là những sĩ tử đã đỗ kì thi Hương, vượt qua kỳ kiểm tra ở Bộ Lễ sẽ được vào Quốc Tử Giám học tập, nghe giảng sách, làm văn để chuẩn bị thi Hội, thi Đình. Rất nhiều học giả nổi tiếng có công cho triều đình đã học tập tại Quốc Tử Giám.":"The Temple of Literature and the Imperial Academy are two structures built to teach and worship Confucius and other Confucian scholars of the past. The Temple of Literature was built in 1070 under the reign of King Ly Thanh Tong, and the Imperial Academy was built in 1076 under the reign of King Ly Nhan Tong. It can be said that the Ly Dynasty was the period when Vietnamese education developed the most in the feudal dynasties, and the Imperial Academy was the clearest demonstration of King Ly Nhan Tong's determination to improve knowledge. This structure was built to encourage the people's love of learning as well as to seek talents to serve the country. After its construction, studying at the Imperial Academy began in 1076. The students of the Imperial Academy were those who had passed the provincial exams and the examinations at the Ministry of Rites and would be admitted to the Imperial Academy to study, listen to lectures, and write essays to prepare for the provincial and royal exams. Many famous scholars who contributed to the royal court studied at the Imperial Academy.",
+             "Thời Lý: Văn Miếu được xây dựng năm 1070 dưới thời vua Lý Thánh Tông, vừa là nơi thờ Khổng Tử và các bậc hiền triết, vừa là trường học hoàng gia đầu tiên cho Thái tử Lý Càn Đức (sau là vua Lý Nhân Tông). Năm 1076, vua Lý Nhân Tông lập Quốc Tử Giám – trường đại học đầu tiên của Việt Nam, dành cho con vua và quý tộc. Thời Trần: Năm 1253, vua Trần Thái Tông đổi tên thành Quốc Học viện, mở rộng đối tượng học sinh, bao gồm cả con dân thường có học lực xuất sắc. Chu Văn An được bổ nhiệm làm Tư nghiệp Quốc Tử Giám và sau khi mất được thờ tại Văn Miếu. Thời Hậu Lê: Nho giáo phát triển mạnh. Năm 1484, vua Lê Thánh Tông cho dựng bia Tiến sĩ từ khoa thi năm 1442, mỗi khoa một bia đặt trên lưng rùa. Việc dựng bia diễn ra qua nhiều thời kỳ, có lúc bị gián đoạn, nhưng vẫn được tiếp tục đến cuối triều Lê. Thời Nguyễn: Quốc Tử Giám được lập tại Huế. Văn Miếu Thăng Long trở thành Văn Miếu Hà Nội. Tổng trấn Bắc Thành Nguyễn Văn Thành xây thêm Khuê Văn Các. Khu vực này sau được xây đền Khải Thánh để thờ cha mẹ Khổng Tử. Thời hiện đại: Năm 1947, thực dân Pháp phá hủy một phần Văn Miếu bằng pháo. Ngày nay, khu Thái Học được phục dựng trên nền cũ của Quốc Tử Giám với kiến trúc truyền thống, gồm Tiền đường, Hậu đường, Tả vu, Hữu vu, nhà chuông, nhà trống.":"Ly Dynasty: The Temple of Literature was built in 1070 under King Ly Thanh Tong, both as a place to worship Confucius and sages and as the first royal school for Crown Prince Ly Can Duc (later King Ly Nhan Tong). In 1076, King Ly Nhan Tong established Quoc Tu Giam - the first university in Vietnam, for the children of kings and nobles. Tran Dynasty: In 1253, King Tran Thai Tong changed the name to Quoc Hoc Vien, expanding the student body, including children of ordinary people with excellent academic performance. Chu Van An was appointed as Vice-Rector of Quoc Tu Giam and after his death was worshiped at the Temple of Literature. Later Le Dynasty: Confucianism developed strongly. In 1484, King Le Thanh Tong erected the Doctorate stele from the 1442 examination, each examination had a stele placed on the back of a turtle. The erection of the stele took place over many periods, sometimes interrupted, but continued until the end of the Le Dynasty. Nguyen Dynasty: Quoc Tu Giam was established in Hue. The Temple of Literature in Thang Long became the Temple of Literature in Hanoi. The Governor of the Northern Citadel, Nguyen Van Thanh, built the Khue Van Cac. This area was later used to build the Khai Thanh Temple to worship Confucius' parents. Modern times: In 1947, the French colonialists destroyed part of the Temple of Literature with artillery. Today, the Thai Hoc area was restored on the old site of the Imperial Academy with traditional architecture, including the Front Hall, Back Hall, Left Hall, Right Hall, Bell House, and Drum House.",
+             "Lịch sử và cuộc đời của chủ tịch Hồ Chí Minh":"History and life of President Ho Chi Minh",
+             "Giới thiệu Hoàng Thành Thăng Long":"Introduction to Thang Long Imperial Citadel",
+             "Hoàng Thành Thăng Long":"Thang Long Imperial Citadel",
+             "Lịch sử và Truyền thuyết xoay xung quanh Hoàng Thành Thăng Long":"History and Legends surrounding Thang Long Imperial Citadel",
+             "Phố ẩm thực Tống Duy Tân":"Tong Duy Tan Food Street",
+             "Các món nổi tiếng của Hà Nội":"Famous dishes of Hanoi",
+            "Phở":"Pho",
+            "Bún chả":"Bun Cha",
+            "Lăng Chủ tịch Hồ Chí Minh, còn gọi là Lăng Hồ Chủ tịch, Lăng Bác, là nơi gìn giữ thi hài Chủ tịch Hồ Chí Minh. Lăng được chính thức khởi công ngày 2 tháng 9 năm 1973, tại vị trí lễ đài cũ giữa Quảng trường Ba Đình, nơi Chủ tịch Hồ Chí Minh từng chủ trì các cuộc gặp mặt quan trọng. Lăng được khánh thành vào ngày 29 tháng 8 năm 1975, gồm 3 lớp với chiều cao 21,6 m, chiều rộng 41,2 m; lớp dưới tạo dáng bậc thềm tam cấp, lớp giữa là kết cấu trung tâm của lăng gồm phòng thi hài và những hành lang, những cầu thang. Bên ngoài lăng được ốp bằng đá granite xám, bên trong làm bằng đá xám và đỏ được đánh bóng. Quanh 4 mặt là những hàng cột vuông bằng đá hoa cương, lớp trên cùng là mái lăng hình tam cấp. Ở mặt chính có dòng chữ: 'CHỦ TỊCH HỒ-CHÍ-MINH' bằng đá hồng màu mận chín. Xung quanh lăng là các khu vườn nơi hơn 250 loài thực vật được trồng từ khắp mọi miền của Việt Nam.":"Ho Chi Minh Mausoleum, also known as Ho Chi Minh Mausoleum, Uncle Ho Mausoleum, is where the body of President Ho Chi Minh is kept. The mausoleum was officially started on September 2, 1973, at the old stage in the middle of Ba Dinh Square, where President Ho Chi Minh used to preside over important meetings. The mausoleum was inaugurated on August 29, 1975, consisting of 3 layers with a height of 21.6 m, a width of 41.2 m; the lower layer is shaped like a three-step staircase, the middle layer is the central structure of the mausoleum including the body room and corridors, stairs. The outside of the mausoleum is covered with gray granite, the inside is made of polished gray and red stone. Around the 4 sides are rows of square marble columns, the top layer is the mausoleum roof in a three-step shape. On the main facade is the inscription: 'PRESIDENT HO-CHI-MINH' in ripe plum-colored pink stone. Surrounding the mausoleum are gardens where more than 250 species of plants are grown from all over Vietnam.",
+            "Hồ Chí Minh (chữ Nho: 胡志明; 19 tháng 5 năm 1890 – 2 tháng 9 năm 1969), tên khai sinh là Nguyễn Sinh Cung (chữ Nho: 阮生恭), còn được gọi phổ biến tại Việt Nam với tên gọi Bác Hồ, là một nhà cách mạng và chính khách người Việt Nam. Ông là người sáng lập Đảng Cộng sản Việt Nam, từng là Chủ tịch nước Việt Nam Dân chủ Cộng hòa từ 1945–1969, Thủ tướng Việt Nam Dân chủ Cộng hòa trong những năm 1945–1955, Tổng Bí thư Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ 1956–1960, Chủ tịch Ban Chấp hành Trung ương Đảng Lao động Việt Nam từ năm 1951 cho đến khi qua đời. Trong quãng thời gian sinh sống và hoạt động trước khi lên nắm quyền, Hồ Chí Minh đã đi qua nhiều quốc gia và châu lục, ông được cho là đã sử dụng từ 50[1] đến 200 bí danh khác nhau.[2] Về mặt tư tưởng chính trị, Hồ Chí Minh là một người theo chủ nghĩa Marx–Lenin. Ông là nhà lãnh đạo phong trào độc lập Việt Minh tiến hành Cách mạng Tháng Tám năm 1945. Ông cũng là người đã soạn thảo, đọc bản Tuyên ngôn độc lập thành lập nước Việt Nam Dân chủ Cộng hòa, và trở thành Chủ tịch nước sau cuộc tổng tuyển cử năm 1946. Trong giai đoạn diễn ra chiến tranh Đông Dương và chiến tranh Việt Nam, Hồ Chí Minh là nhân vật chủ chốt trong hàng ngũ lãnh đạo của Việt Nam Dân chủ Cộng hòa và Mặt trận Dân tộc Giải phóng miền Nam Việt Nam. Hồ Chí Minh giảm dần hoạt động chính trị vào năm 1965 vì lý do sức khỏe rồi qua đời vào năm 1969. Năm 1975, Việt Nam Dân chủ Cộng hòa chiến thắng, hai miền Việt Nam được thống nhất, dẫn đến sự ra đời của nhà nước Cộng hòa Xã hội chủ nghĩa Việt Nam vào năm 1976. Thành phố Sài Gòn – Gia Định được đổi tên thành Thành phố Hồ Chí Minh để tôn vinh ông cũng như sự kiện này. Ngoài hoạt động chính trị, Hồ Chí Minh cũng là nhà văn, nhà thơ và nhà báo với nhiều tác phẩm viết bằng tiếng Việt, tiếng Hán và tiếng Pháp.":"Ho Chi Minh (Chinese: 胡志明; May 19, 1890 – September 2, 1969), born Nguyen Sinh Cung (Chinese: 阮生恭), also known in Vietnam as Uncle Ho, was a Vietnamese revolutionary and politician. He was the founder of the Communist Party of Vietnam, President of the Democratic Republic of Vietnam from 1945–1969, Prime Minister of the Democratic Republic of Vietnam from 1945–1955, General Secretary of the Central Committee of the Vietnam Workers' Party from 1956–1960, Chairman of the Central Committee of the Vietnam Workers' Party from 1951 until his death. During his life and work before coming to power, Ho Chi Minh traveled to many countries and continents, and is said to have used between 50[1] and 200 different aliases.[2] In terms of political ideology, Ho Chi Minh was a Marxist–Leninist. He was the leader of the Viet Minh independence movement that carried out the August Revolution in 1945. He was also the one who drafted and read the Declaration of Independence that established the Democratic Republic of Vietnam, and became President after the general election in 1946. During the Indochina War and the Vietnam War, Ho Chi Minh was a key figure in the leadership of the Democratic Republic of Vietnam and the National Liberation Front of South Vietnam. Ho Chi Minh gradually reduced his political activities in 1965 due to health reasons and passed away in 1969. In 1975, the Democratic Republic of Vietnam won, the two regions of Vietnam were unified, leading to the birth of the Socialist Republic of Vietnam in 1976. Saigon - Gia Dinh City was renamed Ho Chi Minh City to honor him as well as this event. In addition to his political activities, Ho Chi Minh was also a writer, poet and journalist with many works written in Vietnamese, Chinese and French.",
+            "Hoàng thành Thăng Long là quần thể di tích lịch sử và văn hóa tại Hà Nội, có lịch sử hơn 1.000 năm, từng là trung tâm quyền lực của nhiều triều đại phong kiến Việt Nam. Nơi đây bao gồm nhiều công trình kiến trúc giá trị như Đoan Môn, Điện Kính Thiên, Kỳ Đài, và khu khảo cổ 18 Hoàng Diệu. Hoàng thành được UNESCO công nhận là Di sản Văn hóa Thế giới vào năm 2010 nhờ giá trị lịch sử, văn hóa, và kiến trúc độc đáo.":"Thang Long Imperial Citadel is a complex of historical and cultural relics in Hanoi, with a history of more than 1,000 years, and was the center of power of many feudal dynasties in Vietnam. It includes many valuable architectural works such as Doan Mon, Dien Kinh Thien, Ky Dai, and the archaeological site at 18 Hoang Dieu. The Imperial Citadel was recognized by UNESCO as a World Cultural Heritage in 2010 for its unique historical, cultural, and architectural values.",
+            "Năm 1009, Lý Công Uẩn lên ngôi, sáng lập ra vương triều Lý, lấy niên hiệu là Thái Tổ, đóng đô ở Hoa Lư (Ninh Bình). Hoa Lư là kinh đô của nước Đại Cồ Việt dưới hai triều Đinh (968-979) và Tiền Lê (980-1009), nằm ở vùng núi non hiểm trở với địa thế 'tiến khả dĩ công, thoái khả dĩ thủ' (tiến có thể đánh thắng, thoái có thể bảo vệ). Song vị vua 35 tuổi quyết định dời đô ra thành Đại La. Trong Chiếu dời đô, Lý Công Uẩn viết, thành Đại La “Ở vào nơi trung tâm trời đất, được thế rồng cuộn hổ ngồi, chính giữa Nam Bắc Đông Tây, tiện nghi núi sông sau trước. Vùng này mặt đất rộng mà bằng phẳng, thế đất cao mà sáng sủa, dân cư không khổ thấp trũng tối tăm, muôn vật hết sức tươi tốt phồn thịnh. Xem khắp nước Việt đó là nơi thắng địa, thực là chỗ tụ hội quan yếu của bốn phương, đúng là nơi thượng đô kinh sư mãi muôn đời”. Trong Đại Việt sử ký tiền biên, sử gia Ngô Thì Sĩ đánh giá rất cao việc dời đô của Lý Công Uẩn: 'Đất Long Đỗ là nơi Cao Biền đóng đô ở đấy, núi Tản Viên chống vững một cõi, sông Phú Lương như hào trời sinh ra, ngàn dặm bằng phẳng, trăm họ giàu có, phía Tây thông với Sơn Tây, Tuyên Hưng, phía Bắc thấu đến Ninh Sóc, Kinh Bắc. Miền Đông Nam thì vận chuyển bằng thuyền, miền Cần Xương thì liên lạc bằng trạm là nơi bốn phương của nước, bốn phương chầu về, núi là vạt áo che, sông là dải đai thắt, sau lưng là sông, trước mặt là biển, địa thế hùng mạnh mà hiểm, rộng mà dài. Có thể làm nơi vua ở hùng tráng, ngôi báu vững bền. Hình thế nước Việt không nơi nào hơn được nơi này... Lý Thái Tổ lên ngôi, chưa vội làm việc khác mà trước tiên mưu tính việc định đô, đặt đỉnh, xét về sự quyết đoán sáng suốt, mưu kế anh hùng, thực những vua tầm thường không thể làm được'. Mùa Thu năm 1010, Lý Công Uẩn cùng hoàng triều và tướng lĩnh giong thuyền về Đại La. Trong một giấc mơ, ông đặt tên kinh thành là Thăng Long với nghĩa 'rồng bay'. Ngay từ năm 1010, khi mới định đô Thăng Long, Lý Công Uẩn đã khởi công xây dựng Hoàng thành và hàng loạt cung điện ở trong Hoàng thành. Hoàng thành đắp bằng đất, phía ngoài có hào, mở bốn cửa: Tường Phù ở phía Đông, Quảng Phúc ở phía Tây, Đại Hưng ở phía Nam, Diệu Đức ở phía Bắc. Tuy còn những ý kiến khác nhau, nhưng căn cứ vào sử liệu và di tích còn lại, có thể xác định cửa Tường Phù mở ra phía Chợ Đông và khu phố buôn bán tấp nập của phường Giang Khẩu và đền Bạch Mã.":"In 1009, Ly Cong Uan ascended the throne, founded the Ly dynasty, took the reign name Thai To, and established the capital in Hoa Lu (Ninh Binh). Hoa Lu was the capital of Dai Co Viet under the two dynasties of Dinh (968-979) and Tien Le (980-1009), located in a rugged mountainous area with the terrain of 'advancing can win, retreating can protect'. However, the 35-year-old king decided to move the capital to Dai La citadel. In the Proclamation on the Transfer of the Capital, Ly Cong Uan wrote that Dai La citadel 'is located at the center of heaven and earth, with the position of a coiled dragon and a sitting tiger, in the middle of the South, North, East, and West, with convenient mountains and rivers in front and behind. This area has a wide and flat land, high and bright terrain, the people do not suffer from low and dark places, all things are extremely fresh and prosperous. Looking at the whole country of Viet, this is a place of victory, truly an important gathering place of the four directions, truly the place where the capital will be raised forever'. In Dai Viet Su Ky Tien Bien, historian Ngo Thi Si highly appreciated Ly Cong Uan's move of the capital: 'Long Do land is where Cao Bien established his capital, Tan Vien mountain firmly supported a territory, Phu Luong river is like a moat created by heaven, thousands of miles flat, the people are rich, the West connects with Son Tay, Tuyen Hung, the North reaches Ninh Soc, Kinh Bac. The Southeast is transported by boat, Can Xuong area is communicated by post, where the four directions of the country, the four directions pay homage, the mountain is the flap of the shirt covering, the river is the belt, behind is the river, in front is the sea, the terrain is powerful but dangerous, wide and long. It can be a majestic place for the king to live, the throne is stable. The terrain of Vietnam is no better than this place... Ly Thai To ascended the throne, did not rush to do other things but first planned to decide on the capital, set up the peak, considering his decisiveness, wisdom, heroic strategy, truly ordinary kings cannot do it'. In the fall of 1010, Ly Cong Uan and his royal court and generals sailed to Dai La. In a dream, he named the capital Thang Long, meaning 'flying dragon'. As early as 1010, when he first established Thang Long as the capital, Ly Cong Uan started building the Imperial Citadel and a series of palaces inside the Imperial Citadel. The Imperial Citadel was built of earth, with a moat outside and four gates: Tuong Phu in the East, Quang Phuc in the West, Dai Hung in the South, and Dieu Duc in the North. Although there are still different opinions, based on historical documents and remaining relics, it can be determined that Tuong Phu gate opened to the Eastern Market and the bustling commercial area of ​​Giang Khau ward and Bach Ma temple.",
+            "Phố Tống Duy Tân không chỉ nổi tiếng bởi những quán cà phê độc đáo mà còn được biết đến là nơi tập trung vô số món ăn ngon, từ đồ ăn nhẹ đến các bữa ăn no, phục vụ đa dạng nhu cầu của thực khách. Phố Tống Duy Tân dài khoảng 200m, kéo từ phố Trần Phú tới đường Điện Biên Phủ. Tên phố được đặt theo Tiến sĩ Tống Duy Tân (1837-1892), một chí sĩ yêu nước nổi tiếng quê ở huyện Vĩnh Lộc, tỉnh Thanh Hóa. Vào thời Nguyễn, con đường này thuộc khu vực cửa Đông - Nam Thành cổ, nay thuộc phường Hàng Bông, quận Hoàn Kiếm. Trải qua nhiều tên gọi như Bùi Bá Ký hay Kỳ Đồng, đến năm 1964, phố chính thức mang tên Tống Duy Tân. Trước đây, phố chủ yếu phục vụ khách Việt ăn đêm, nhưng hiện nay con phố ẩm thực này sôi động cả ngày lẫn đêm với nhiều quán ăn và quán cà phê thu hút nhiều du khách. Phố Tống Duy Tân đã trở thành điểm ăn uống quen thuộc của người dân Hà Nội. Có người ví vui rằng nếu bạn không biết ăn gì, hãy lên phố Tống Duy Tân bởi nơi hội tụ từ các món truyền thống Việt Nam đến các món hiện đại phục vụ cả khách quốc tế. Thực đơn phong phú với đặc sản ba miền, khiến phố này trở thành điểm dừng chân":"Tong Duy Tan Street is not only famous for its unique cafes but also known as a place that gathers countless delicious dishes, from snacks to full meals, serving the diverse needs of diners. Tong Duy Tan Street is about 200m long, stretching from Tran Phu Street to Dien Bien Phu Street. The street is named after Dr. Tong Duy Tan (1837-1892), a famous patriot from Vinh Loc District, Thanh Hoa Province. During the Nguyen Dynasty, this street belonged to the East - South Gate area of ​​the Citadel, now in Hang Bong Ward, Hoan Kiem District. Having gone through many names such as Bui Ba Ky or Ky Dong, in 1964, the street was officially named Tong Duy Tan. Previously, the street mainly served Vietnamese customers at night, but now this culinary street is bustling day and night with many restaurants and cafes attracting many tourists. Tong Duy Tan Street has become a familiar dining spot for Hanoians. Some people jokingly say that if you don't know what to eat, go to Tong Duy Tan street because it is a place that brings together traditional Vietnamese dishes and modern dishes to serve international guests. The rich menu with specialties from three regions makes this street a stopover.",
+            "Phố cổ Hà Nội là khu vực lịch sử gồm khoảng 100 ha với 76 tuyến phố thuộc 10 phường ở quận Hoàn Kiếm, nổi tiếng với các khu phố chuyên bán từng mặt hàng cụ thể như Hàng Bạc (vàng bạc), Hàng Mã (đồ thờ cúng, trang trí), và Hàng Đào (vải vóc). Du khách có thể tham quan các địa điểm như Hồ Hoàn Kiếm, Chợ Đồng Xuân, Nhà Cổ Mã Mây, và tận hưởng không khí nhộn nhịp của Chợ đêm phố cổ vào cuối tuần.":"Hanoi’s Old Quarter is a historic area of ​​about 100 hectares with 76 streets in 10 wards in Hoan Kiem District, famous for its streets specializing in selling specific goods such as Hang Bac (gold and silver), Hang Ma (worship items, decorations), and Hang Dao (fabrics). Visitors can visit places such as Hoan Kiem Lake, Dong Xuan Market, Ma May Ancient House, and enjoy the bustling atmosphere of the Old Quarter Night Market on weekends.",
+            "Phố Tống Duy Tân không chỉ nổi tiếng bởi những quán cà phê độc đáo mà còn được biết đến là nơi tập trung vô số món ăn ngon, từ đồ ăn nhẹ đến các bữa ăn no, phục vụ đa dạng nhu cầu của thực khách. Phố Tống Duy Tân dài khoảng 200m, kéo từ phố Trần Phú tới đường Điện Biên Phủ. Tên phố được đặt theo Tiến sĩ Tống Duy Tân (1837-1892), một chí sĩ yêu nước nổi tiếng quê ở huyện Vĩnh Lộc, tỉnh Thanh Hóa. Vào thời Nguyễn, con đường này thuộc khu vực cửa Đông - Nam Thành cổ, nay thuộc phường Hàng Bông, quận Hoàn Kiếm. Trải qua nhiều tên gọi như Bùi Bá Ký hay Kỳ Đồng, đến năm 1964, phố chính thức mang tên Tống Duy Tân. Trước đây, phố chủ yếu phục vụ khách Việt ăn đêm, nhưng hiện nay con phố ẩm thực này sôi động cả ngày lẫn đêm với nhiều quán ăn và quán cà phê thu hút nhiều du khách. Phố Tống Duy Tân đã trở thành điểm ăn uống quen thuộc của người dân Hà Nội. Có người ví vui rằng nếu bạn không biết ăn gì, hãy lên phố Tống Duy Tân bởi nơi hội tụ từ các món truyền thống Việt Nam đến các món hiện đại phục vụ cả khách quốc tế. Thực đơn phong phú với đặc sản ba miền, khiến phố này trở thành điểm dừng chân":"Tong Duy Tan Street is not only famous for its unique cafes but also known as a place that gathers countless delicious dishes, from snacks to full meals, serving the diverse needs of diners. Tong Duy Tan Street is about 200m long, stretching from Tran Phu Street to Dien Bien Phu Street. The street is named after Dr. Tong Duy Tan (1837-1892), a famous patriot from Vinh Loc District, Thanh Hoa Province. During the Nguyen Dynasty, this street belonged to the East - South Gate area of ​​the Citadel, now in Hang Bong Ward, Hoan Kiem District. Having gone through many names such as Bui Ba Ky or Ky Dong, in 1964, the street was officially named Tong Duy Tan. Previously, the street mainly served Vietnamese customers at night, but now this culinary street is bustling day and night with many restaurants and cafes attracting many tourists. Tong Duy Tan Street has become a familiar dining spot for Hanoians. Some people jokingly say that if you don't know what to eat, go to Tong Duy Tan street because it is a place that brings together traditional Vietnamese dishes and modern dishes to serve international guests. The rich menu with specialties from three regions makes this street a stopover.",
+        };
+
+    function translateText(node) {
+        if (node.nodeType === 3) {
+            let txt = node.nodeValue.trim();
+            if (viToEn[txt]) node.nodeValue = viToEn[txt];
+        } else if (node.nodeType === 1) {
+            // Translate button text
+            if (node.tagName === 'BUTTON' && viToEn[node.textContent.trim()]) {
+                node.textContent = viToEn[node.textContent.trim()];
+            }
+            // Translate element innerText if matches (except <a> and <li>)
+            if (node.tagName !== 'A' && node.tagName !== 'LI' && viToEn[node.innerText?.trim()]) {
+                node.innerText = viToEn[node.innerText.trim()];
+            }
+            // Translate <a> text only (not attributes)
+            if (node.tagName === 'A' && viToEn[node.textContent.trim()]) {
+                node.textContent = viToEn[node.textContent.trim()];
+            }
+            // Translate <li> text only (not children)
+            if (node.tagName === 'LI' && viToEn[node.firstChild?.nodeValue?.trim()]) {
+                node.firstChild.nodeValue = viToEn[node.firstChild.nodeValue.trim()];
+            }
+            // Recursively translate children
+            node.childNodes.forEach(translateText);
+        }
+    }
+
+    translateText(document.body);
+    document.title = viToEn[document.title] || document.title;
+        document.getElementById('translateBtn').classList.add('active');
+        document.getElementById('translateViBtn').classList.remove('active');
+    }
+    </script>
+    
+</body>
+</html></div></html>
